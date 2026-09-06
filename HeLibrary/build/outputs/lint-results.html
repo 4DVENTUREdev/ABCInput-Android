@@ -1,0 +1,1787 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Lint Report</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto" />
+<link rel="stylesheet" type="text/css" href="lint-results_files/hololike.css" />
+<script language="javascript" type="text/javascript"> 
+<!--
+function reveal(id) {
+if (document.getElementById) {
+document.getElementById(id).style.display = 'block';
+document.getElementById(id+'Link').style.display = 'none';
+}
+}
+//--> 
+</script>
+</head>
+<body>
+<h1>Lint Report</h1>
+<div class="titleSeparator"></div>
+Check performed at Sat Sep 05 21:45:28 BST 2026.<br/>
+11 errors and 95 warnings found:<br/><br/>
+<table class="overview">
+<tr><td></td><td class="categoryColumn"><a href="#Lint">Lint</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-error.png" alt="Error" />
+<a href="#LintError">LintError: Lint Failure</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
+</td></tr>
+<tr>
+<td class="countColumn">3</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#DefaultLocale">DefaultLocale: Implied default locale in case conversion</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#OldTargetApi">OldTargetApi: Target SDK attribute is not targeting latest version</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#GradleDependency">GradleDependency: Obsolete Gradle Dependency</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Correctness:Messages">Correctness:Messages</a>
+</td></tr>
+<tr>
+<td class="countColumn">9</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-error.png" alt="Error" />
+<a href="#MissingTranslation">MissingTranslation: Incomplete translation</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-error.png" alt="Error" />
+<a href="#ExtraTranslation">ExtraTranslation: Extra translation</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Performance">Performance</a>
+</td></tr>
+<tr>
+<td class="countColumn">89</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#UnusedResources">UnusedResources: Unused resources</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#Usability">Usability</a>
+</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><img border="0" align="top" src="lint-results_files/lint-warning.png" alt="Warning" />
+<a href="#GoogleAppIndexingWarning">GoogleAppIndexingWarning: Missing support for Google App Indexing</a>
+</td></tr>
+<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (13)</a>
+</td></tr></table>
+<br/>
+<a name="Lint"></a>
+<div class="category"><a href="#" title="Return to top">Lint</a><div class="categorySeparator"></div>
+</div>
+<a name="LintError"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">LintError: Lint Failure</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../../HeLibrary">../../../HeLibrary</a></span>: <span class="message">Can't find API database; API check not performed</span><br />
+</div>
+<div class="metadata">Priority: 10 / 10<br/>
+Category: Lint</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Lint Failure.</div>
+<div class="explanation">
+This issue type represents a problem running lint itself. Examples include failure to find bytecode for source files (which means certain detectors could not be run), parsing errors in lint configuration files, etc.<br/>
+These errors are not errors in your own code, but they are shown to make it clear that some checks were not completed.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "LintError" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Correctness"></a>
+<div class="category"><a href="#" title="Return to top">Correctness</a><div class="categorySeparator"></div>
+</div>
+<a name="DefaultLocale"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">DefaultLocale: Implied default locale in case conversion</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java">../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java</a>:61</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  58</span>         String shuMaStr = "";
+<span class="lineno">  59</span>         if (ma2==0)
+<span class="lineno">  60</span>         {
+<span class="lineno">  61</span>             shuMaStr = String.<span class="errorspan">format("%02d",ma1);</span>
+<span class="lineno">  62</span>         }
+<span class="lineno">  63</span>         else if (ma3 == 0)
+</pre>
+<span class="location"><a href="../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java">../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java</a>:65</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  62</span>         }
+<span class="lineno">  63</span>         else if (ma3 == 0)
+<span class="lineno">  64</span>         {
+<span class="lineno">  65</span>             shuMaStr = String.<span class="errorspan">format("%02d %02d",ma1,ma2);</span>
+<span class="lineno">  66</span>         }
+<span class="lineno">  67</span>         else if (ma3 > 0)
+</pre>
+<span class="location"><a href="../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java">../../src/main/java/net/HeZi/Android/HeLibrary/HeBase/ZiCiObject.java</a>:69</span>: <span class="message">Implicitly using the default locale is a common source of bugs: Use <code>String.format(Locale, ...)</code> instead</span><br /><pre class="errorlines">
+<span class="lineno">  66</span>         }
+<span class="lineno">  67</span>         else if (ma3 > 0)
+<span class="lineno">  68</span>         {
+<span class="lineno">  69</span>             shuMaStr = String.<span class="errorspan">format("%02d %02d %02d",ma1,ma2,ma3);</span>
+<span class="lineno">  70</span>         }
+<span class="lineno">  71</span>         return shuMaStr;
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Implied default locale in case conversion.</div>
+<div class="explanation">
+Calling <code>String#toLowerCase()</code> or <code>#toUpperCase()</code> <b>without specifying an explicit locale</b> is a common source of bugs. The reason for that is that those methods will use the current locale on the user's device, and even though the code appears to work correctly when you are developing the app, it will fail in some locales. For example, in the Turkish locale, the uppercase replacement for <code>i</code> is <b>not</b> <code>I</code>.<br/>
+<br/>
+If you want the methods to just perform ASCII replacement, for example to convert an enum name, call <code>String#toUpperCase(Locale.US)</code> instead. If you really want to use the current locale, call <code>String#toUpperCase(Locale.getDefault())</code> instead.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/java/util/Locale.html#default_locale">http://developer.android.com/reference/java/util/Locale.html#default_locale</a>
+</div><br/>To suppress this error, use the issue id "DefaultLocale" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="OldTargetApi"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">OldTargetApi: Target SDK attribute is not targeting latest version</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:9</span>: <span class="message">Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.</span><br /><pre class="errorlines">
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     defaultConfig {
+<span class="lineno">   8</span>         minSdkVersion 17
+<span class="lineno">   9</span>         <span class="errorspan">targetSdkVersion 22</span>
+<span class="lineno">  10</span>         versionCode 11
+<span class="lineno">  11</span>         versionName "3.0"
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Priority: 6 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Target SDK attribute is not targeting latest version.</div>
+<div class="explanation">
+When your application runs on a version of Android that is more recent than your <code>targetSdkVersion</code> specifies that it has been tested with, various compatibility modes kick in. This ensures that your application continues to work, but it may look out of place. For example, if the <code>targetSdkVersion</code> is less than 14, your app may get an option button in the UI.<br/>
+<br/>
+To fix this issue, set the <code>targetSdkVersion</code> to the highest available value. Then test your app to make sure everything works correctly. You may want to consult the compatibility notes to see what changes apply to each version you are adding support for: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html">http://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a>
+</div><br/>To suppress this error, use the issue id "OldTargetApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="GradleDependency"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">GradleDependency: Obsolete Gradle Dependency</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:24</span>: <span class="message">Dependency on a support library, but the SDK installation does not have the "Extras > Android Support Repository" installed. Open the SDK manager and install it.</span><br /><pre class="errorlines">
+<span class="lineno">  21</span> 
+<span class="lineno">  22</span> dependencies {
+<span class="lineno">  23</span>     compile fileTree(dir: 'libs', include: ['*.jar'])
+<span class="lineno">  24</span>     <span class="errorspan">compile 'com.android.support:appcompat-v7:22.2.1'</span>
+<span class="lineno">  25</span> 
+<span class="lineno">  26</span> }
+</pre>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Priority: 4 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Obsolete Gradle Dependency.</div>
+<div class="explanation">
+This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "GradleDependency" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Correctness:Messages"></a>
+<div class="category"><a href="#" title="Return to top">Correctness:Messages</a><div class="categorySeparator"></div>
+</div>
+<a name="MissingTranslation"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">MissingTranslation: Incomplete translation</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:2</span>: <span class="message">"<code>app_name</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;resources>
+<span class="lineno">   2</span>     &lt;string <span class="errorspan">name="app_name">HeLibrary&lt;/string></span>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string name="hello_world">Hello world!&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:4</span>: <span class="message">"<code>hello_world</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;resources>
+<span class="lineno">   2</span>     &lt;string name="app_name">HeLibrary&lt;/string>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string <span class="errorspan">name="hello_world">Hello world!&lt;/string></span>
+<span class="lineno">   5</span>     &lt;string name="action_settings">Settings&lt;/string>
+<span class="lineno">   6</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:5</span>: <span class="message">"<code>action_settings</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">   2</span>     &lt;string name="app_name">HeLibrary&lt;/string>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string name="hello_world">Hello world!&lt;/string>
+<span class="lineno">   5</span>     &lt;string <span class="errorspan">name="action_settings">Settings&lt;/string></span>
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     &lt;string name="settings_name">Settings&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:54</span>: <span class="message">"<code>HeApp_Link</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  51</span>     &lt;string name="menu_big_number_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  53</span> 
+<span class="lineno">  54</span>     &lt;string <span class="errorspan">name="HeApp_Link">HeChinese Link&lt;/string></span>
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:55</span>: <span class="message">"<code>HeApp_ViewTitle</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  53</span> 
+<span class="lineno">  54</span>     &lt;string name="HeApp_Link">HeChinese Link&lt;/string>
+<span class="lineno">  55</span>     &lt;string <span class="errorspan">name="HeApp_ViewTitle">HeChinese Apps&lt;/string></span>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+</pre>
+<button id="MissingTranslationDivLink" onclick="reveal('MissingTranslationDiv');" />+ 4 More Occurrences...</button>
+<div id="MissingTranslationDiv" style="display: none">
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:57</span>: <span class="message">"<code>HePage_OnlineCourse</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  54</span>     &lt;string name="HeApp_Link">HeChinese Link&lt;/string>
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string></span>
+<span class="lineno">  58</span>     &lt;string name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string>
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:58</span>: <span class="message">"<code>HePage_OnlineCourse_Sub</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+<span class="lineno">  58</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string></span>
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+<span class="lineno">  60</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:59</span>: <span class="message">"<code>HePage_OnlineCourse_Link</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+<span class="lineno">  58</span>     &lt;string name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string>
+<span class="lineno">  59</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string></span>
+<span class="lineno">  60</span> 
+<span class="lineno">  61</span>     &lt;string name="NumPad_CharBoard">Char&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:82</span>: <span class="message">"<code>hello_blank_fragment</code>" is not translated in "zh" (Chinese)</span><br /><pre class="errorlines">
+<span class="lineno">  79</span> 
+<span class="lineno">  80</span> 
+<span class="lineno">  81</span> &lt;!-- TODO: Remove or change this placeholder text -->
+<span class="lineno">  82</span>     &lt;string <span class="errorspan">name="hello_blank_fragment">Hello blank fragment&lt;/string></span>
+<span class="lineno">  83</span> 
+<span class="lineno">  84</span> &lt;/resources>
+</pre>
+</div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Priority: 8 / 10<br/>
+Category: Correctness:Messages</div>
+Severity: <span class="error">Fatal</span><div class="summary">
+Explanation: Incomplete translation.</div>
+<div class="explanation">
+If an application has more than one locale, then all the strings declared in one language should also be translated in all other languages.<br/>
+<br/>
+If the string should <b>not</b> be translated, you can add the attribute <code>translatable="false"</code> on the <code>&lt;string></code> element, or you can define all your non-translatable strings in a resource file called <code>donottranslate.xml</code>. Or, you can ignore the issue with a <code>tools:ignore="MissingTranslation"</code> attribute.<br/>
+<br/>
+By default this detector allows regions of a language to just provide a subset of the strings and fall back to the standard language strings. You can require all regions to provide a full translation by setting the environment variable <code>ANDROID_LINT_COMPLETE_REGIONS</code>.<br/>
+<br/>
+You can tell lint (and other tools) which language is the default language in your <code>res/values/</code> folder by specifying <code>tools:locale="languageCode"</code> for the root <code>&lt;resources></code> element in your resource file. (The <code>tools</code> prefix refers to the namespace declaration <code>http://schemas.android.com/tools</code>.)
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "MissingTranslation" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="ExtraTranslation"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">ExtraTranslation: Extra translation</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:18</span>: <span class="message">"<code>title_activity_search</code>" is translated here but not found in default locale</span><br /><pre class="errorlines">
+<span class="lineno">  15</span>     &lt;string name="label_next_key">&#19979;&#19968;&#27493;&lt;/string>
+<span class="lineno">  16</span>     &lt;string name="label_send_key">&#21457;&#36865;&lt;/string>
+<span class="lineno">  17</span> 
+<span class="lineno">  18</span> 	&lt;string <span class="errorspan">name="title_activity_search">&#25628;&#32034;&#12298;&#21644;&#30721;&#20013;&#25991;&#12299;&lt;/string></span>
+<span class="lineno">  19</span> 
+<span class="lineno">  20</span> 	&lt;string name="menu_repeat">&#37325;&#22797;&lt;/string>
+</pre>
+</div>
+<div class="metadata">Priority: 6 / 10<br/>
+Category: Correctness:Messages</div>
+Severity: <span class="error">Fatal</span><div class="summary">
+Explanation: Extra translation.</div>
+<div class="explanation">
+If a string appears in a specific language translation file, but there is no corresponding string in the default locale, then this string is probably unused. (It's technically possible that your application is only intended to run in a specific locale, but it's still a good idea to provide a fallback.).<br/>
+<br/>
+Note that these strings can lead to crashes if the string is looked up on any locale not providing a translation, so it's important to clean them up.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "ExtraTranslation" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Performance"></a>
+<div class="category"><a href="#" title="Return to top">Performance</a><div class="categorySeparator"></div>
+</div>
+<a name="UnusedResources"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">UnusedResources: Unused resources</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/action_search.png">../../src/main/res/mipmap-hdpi/action_search.png</a></span>: <span class="message">The resource <code>R.mipmap.action_search</code> appears to be unused</span><br />
+<ul></ul><button id="Location1DivLink" onclick="reveal('Location1Div');" />+ 2 Additional Locations...</button>
+<div id="Location1Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-mdpi/action_search.png">../../src/main/res/mipmap-mdpi/action_search.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/action_search.png">../../src/main/res/mipmap-xhdpi/action_search.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/action_search.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/action_search.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/action_search.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/action_search.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-mdpi/action_search.png"><img border="0" align="top" src="../../src/main/res/mipmap-mdpi/action_search.png" /></a>
+</td></tr><tr><th></th><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/arrow_left.png">../../src/main/res/mipmap-hdpi/arrow_left.png</a></span>: <span class="message">The resource <code>R.mipmap.arrow_left</code> appears to be unused</span><br />
+<ul></ul><button id="Location2DivLink" onclick="reveal('Location2Div');" />+ 1 Additional Locations...</button>
+<div id="Location2Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/arrow_left.png">../../src/main/res/mipmap-xhdpi/arrow_left.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/arrow_left.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/arrow_left.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/arrow_left.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/arrow_left.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/arrow_right.png">../../src/main/res/mipmap-hdpi/arrow_right.png</a></span>: <span class="message">The resource <code>R.mipmap.arrow_right</code> appears to be unused</span><br />
+<ul></ul><button id="Location3DivLink" onclick="reveal('Location3Div');" />+ 1 Additional Locations...</button>
+<div id="Location3Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/arrow_right.png">../../src/main/res/mipmap-xhdpi/arrow_right.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/arrow_right.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/arrow_right.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/arrow_right.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/arrow_right.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:3</span>: <span class="message">The resource <code>R.dimen.activity_horizontal_margin</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;resources>
+<span class="lineno">   2</span>     &lt;!-- Default screen margins, per the Android Design guidelines. -->
+<span class="lineno">   3</span>     &lt;dimen <span class="errorspan">name="activity_horizontal_margin">16dp&lt;/dimen></span>
+<span class="lineno">   4</span>     &lt;dimen name="activity_vertical_margin">16dp&lt;/dimen>
+<span class="lineno">   5</span> 
+</pre>
+<ul></ul><button id="Location4DivLink" onclick="reveal('Location4Div');" />+ 7 Additional Locations...</button>
+<div id="Location4Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:2</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:2</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:4</span>: <span class="message">The resource <code>R.dimen.activity_vertical_margin</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;resources>
+<span class="lineno">   2</span>     &lt;!-- Default screen margins, per the Android Design guidelines. -->
+<span class="lineno">   3</span>     &lt;dimen name="activity_horizontal_margin">16dp&lt;/dimen>
+<span class="lineno">   4</span>     &lt;dimen <span class="errorspan">name="activity_vertical_margin">16dp&lt;/dimen></span>
+<span class="lineno">   5</span> 
+<span class="lineno">   6</span>     &lt;!-- Keyboard dimens -->
+</pre>
+<ul></ul><button id="Location5DivLink" onclick="reveal('Location5Div');" />+ 7 Additional Locations...</button>
+<div id="Location5Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:4</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:4</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:4</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:4</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:4</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:3</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:3</span>
+</ul>
+</div><br/><br/>
+<button id="UnusedResourcesDivLink" onclick="reveal('UnusedResourcesDiv');" />+ 84 More Occurrences...</button>
+<div id="UnusedResourcesDiv" style="display: none">
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:9</span>: <span class="message">The resource <code>R.dimen.key_4x6_height</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   6</span>     &lt;!-- Keyboard dimens -->
+<span class="lineno">   7</span>     &lt;dimen name="key_height">36dip&lt;/dimen>
+<span class="lineno">   8</span>     &lt;dimen name="key_6x7_height">40dip&lt;/dimen>
+<span class="lineno">   9</span>     &lt;dimen <span class="errorspan">name="key_4x6_height">45dip&lt;/dimen></span>
+<span class="lineno">  10</span> 
+<span class="lineno">  11</span>     &lt;!-- does not take effect -->
+</pre>
+<ul></ul><button id="Location6DivLink" onclick="reveal('Location6Div');" />+ 7 Additional Locations...</button>
+<div id="Location6Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:9</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:9</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:9</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:9</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:9</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:11</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:11</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:13</span>: <span class="message">The resource <code>R.dimen.key_4x6_textSize</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  10</span> 
+<span class="lineno">  11</span>     &lt;!-- does not take effect -->
+<span class="lineno">  12</span>     &lt;dimen name="key_6x7_textSize">32sp&lt;/dimen>
+<span class="lineno">  13</span>     &lt;dimen <span class="errorspan">name="key_4x6_textSize">36.0sp&lt;/dimen></span>
+<span class="lineno">  14</span> 
+<span class="lineno">  15</span>     &lt;dimen name="margin_small">6dp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location7DivLink" onclick="reveal('Location7Div');" />+ 7 Additional Locations...</button>
+<div id="Location7Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:13</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:13</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:13</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:13</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:13</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:14</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:14</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:15</span>: <span class="message">The resource <code>R.dimen.margin_small</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  12</span>     &lt;dimen name="key_6x7_textSize">32sp&lt;/dimen>
+<span class="lineno">  13</span>     &lt;dimen name="key_4x6_textSize">36.0sp&lt;/dimen>
+<span class="lineno">  14</span> 
+<span class="lineno">  15</span>     &lt;dimen <span class="errorspan">name="margin_small">6dp&lt;/dimen></span>
+<span class="lineno">  16</span>     &lt;dimen name="margin_medium">12dp&lt;/dimen>
+<span class="lineno">  17</span>     &lt;dimen name="margin_large">18dp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location8DivLink" onclick="reveal('Location8Div');" />+ 7 Additional Locations...</button>
+<div id="Location8Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:15</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:15</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:15</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:15</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:15</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:16</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:16</span>: <span class="message">The resource <code>R.dimen.margin_medium</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  13</span>     &lt;dimen name="key_4x6_textSize">36.0sp&lt;/dimen>
+<span class="lineno">  14</span> 
+<span class="lineno">  15</span>     &lt;dimen name="margin_small">6dp&lt;/dimen>
+<span class="lineno">  16</span>     &lt;dimen <span class="errorspan">name="margin_medium">12dp&lt;/dimen></span>
+<span class="lineno">  17</span>     &lt;dimen name="margin_large">18dp&lt;/dimen>
+<span class="lineno">  18</span> 
+</pre>
+<ul></ul><button id="Location9DivLink" onclick="reveal('Location9Div');" />+ 7 Additional Locations...</button>
+<div id="Location9Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:16</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:17</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:17</span>: <span class="message">The resource <code>R.dimen.margin_large</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  14</span> 
+<span class="lineno">  15</span>     &lt;dimen name="margin_small">6dp&lt;/dimen>
+<span class="lineno">  16</span>     &lt;dimen name="margin_medium">12dp&lt;/dimen>
+<span class="lineno">  17</span>     &lt;dimen <span class="errorspan">name="margin_large">18dp&lt;/dimen></span>
+<span class="lineno">  18</span> 
+<span class="lineno">  19</span>     &lt;dimen name="fontSize_verySmall">8sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location10DivLink" onclick="reveal('Location10Div');" />+ 7 Additional Locations...</button>
+<div id="Location10Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:17</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:18</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:18</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:19</span>: <span class="message">The resource <code>R.dimen.fontSize_verySmall</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  16</span>     &lt;dimen name="margin_medium">12dp&lt;/dimen>
+<span class="lineno">  17</span>     &lt;dimen name="margin_large">18dp&lt;/dimen>
+<span class="lineno">  18</span> 
+<span class="lineno">  19</span>     &lt;dimen <span class="errorspan">name="fontSize_verySmall">8sp&lt;/dimen></span>
+<span class="lineno">  20</span>     &lt;dimen name="fontSize_small">14sp&lt;/dimen>
+<span class="lineno">  21</span>     &lt;dimen name="fontSize_normal">18sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location11DivLink" onclick="reveal('Location11Div');" />+ 7 Additional Locations...</button>
+<div id="Location11Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:19</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:19</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:19</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:19</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:19</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:20</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:20</span>: <span class="message">The resource <code>R.dimen.fontSize_small</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  17</span>     &lt;dimen name="margin_large">18dp&lt;/dimen>
+<span class="lineno">  18</span> 
+<span class="lineno">  19</span>     &lt;dimen name="fontSize_verySmall">8sp&lt;/dimen>
+<span class="lineno">  20</span>     &lt;dimen <span class="errorspan">name="fontSize_small">14sp&lt;/dimen></span>
+<span class="lineno">  21</span>     &lt;dimen name="fontSize_normal">18sp&lt;/dimen>
+<span class="lineno">  22</span>     &lt;dimen name="fontSize_large">22sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location12DivLink" onclick="reveal('Location12Div');" />+ 7 Additional Locations...</button>
+<div id="Location12Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:20</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:21</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:21</span>: <span class="message">The resource <code>R.dimen.fontSize_normal</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  18</span> 
+<span class="lineno">  19</span>     &lt;dimen name="fontSize_verySmall">8sp&lt;/dimen>
+<span class="lineno">  20</span>     &lt;dimen name="fontSize_small">14sp&lt;/dimen>
+<span class="lineno">  21</span>     &lt;dimen <span class="errorspan">name="fontSize_normal">18sp&lt;/dimen></span>
+<span class="lineno">  22</span>     &lt;dimen name="fontSize_large">22sp&lt;/dimen>
+<span class="lineno">  23</span>     &lt;dimen name="fontSize_xlarge">26sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location13DivLink" onclick="reveal('Location13Div');" />+ 7 Additional Locations...</button>
+<div id="Location13Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:21</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:22</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:22</span>: <span class="message">The resource <code>R.dimen.fontSize_large</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  19</span>     &lt;dimen name="fontSize_verySmall">8sp&lt;/dimen>
+<span class="lineno">  20</span>     &lt;dimen name="fontSize_small">14sp&lt;/dimen>
+<span class="lineno">  21</span>     &lt;dimen name="fontSize_normal">18sp&lt;/dimen>
+<span class="lineno">  22</span>     &lt;dimen <span class="errorspan">name="fontSize_large">22sp&lt;/dimen></span>
+<span class="lineno">  23</span>     &lt;dimen name="fontSize_xlarge">26sp&lt;/dimen>
+<span class="lineno">  24</span>     &lt;dimen name="fontSize_xlarge2">40sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location14DivLink" onclick="reveal('Location14Div');" />+ 7 Additional Locations...</button>
+<div id="Location14Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:22</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:23</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:23</span>: <span class="message">The resource <code>R.dimen.fontSize_xlarge</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  20</span>     &lt;dimen name="fontSize_small">14sp&lt;/dimen>
+<span class="lineno">  21</span>     &lt;dimen name="fontSize_normal">18sp&lt;/dimen>
+<span class="lineno">  22</span>     &lt;dimen name="fontSize_large">22sp&lt;/dimen>
+<span class="lineno">  23</span>     &lt;dimen <span class="errorspan">name="fontSize_xlarge">26sp&lt;/dimen></span>
+<span class="lineno">  24</span>     &lt;dimen name="fontSize_xlarge2">40sp&lt;/dimen>
+<span class="lineno">  25</span>     &lt;dimen name="fontSize_xxlarge">100sp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location15DivLink" onclick="reveal('Location15Div');" />+ 7 Additional Locations...</button>
+<div id="Location15Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:23</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:24</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:24</span>: <span class="message">The resource <code>R.dimen.fontSize_xlarge2</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  21</span>     &lt;dimen name="fontSize_normal">18sp&lt;/dimen>
+<span class="lineno">  22</span>     &lt;dimen name="fontSize_large">22sp&lt;/dimen>
+<span class="lineno">  23</span>     &lt;dimen name="fontSize_xlarge">26sp&lt;/dimen>
+<span class="lineno">  24</span>     &lt;dimen <span class="errorspan">name="fontSize_xlarge2">40sp&lt;/dimen></span>
+<span class="lineno">  25</span>     &lt;dimen name="fontSize_xxlarge">100sp&lt;/dimen>
+<span class="lineno">  26</span> 
+</pre>
+<ul></ul><button id="Location16DivLink" onclick="reveal('Location16Div');" />+ 7 Additional Locations...</button>
+<div id="Location16Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:24</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:25</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:25</span>: <span class="message">The resource <code>R.dimen.fontSize_xxlarge</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  22</span>     &lt;dimen name="fontSize_large">22sp&lt;/dimen>
+<span class="lineno">  23</span>     &lt;dimen name="fontSize_xlarge">26sp&lt;/dimen>
+<span class="lineno">  24</span>     &lt;dimen name="fontSize_xlarge2">40sp&lt;/dimen>
+<span class="lineno">  25</span>     &lt;dimen <span class="errorspan">name="fontSize_xxlarge">100sp&lt;/dimen></span>
+<span class="lineno">  26</span> 
+<span class="lineno">  27</span>     &lt;dimen name="padding_large">18dp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location17DivLink" onclick="reveal('Location17Div');" />+ 7 Additional Locations...</button>
+<div id="Location17Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:25</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:26</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:26</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:27</span>: <span class="message">The resource <code>R.dimen.padding_large</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  24</span>     &lt;dimen name="fontSize_xlarge2">40sp&lt;/dimen>
+<span class="lineno">  25</span>     &lt;dimen name="fontSize_xxlarge">100sp&lt;/dimen>
+<span class="lineno">  26</span> 
+<span class="lineno">  27</span>     &lt;dimen <span class="errorspan">name="padding_large">18dp&lt;/dimen></span>
+<span class="lineno">  28</span>     &lt;dimen name="padding_medium">14dp&lt;/dimen>
+<span class="lineno">  29</span>     &lt;dimen name="padding_small">8dp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location18DivLink" onclick="reveal('Location18Div');" />+ 7 Additional Locations...</button>
+<div id="Location18Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:27</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:27</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:27</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:27</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:27</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:28</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:28</span>: <span class="message">The resource <code>R.dimen.padding_medium</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  25</span>     &lt;dimen name="fontSize_xxlarge">100sp&lt;/dimen>
+<span class="lineno">  26</span> 
+<span class="lineno">  27</span>     &lt;dimen name="padding_large">18dp&lt;/dimen>
+<span class="lineno">  28</span>     &lt;dimen <span class="errorspan">name="padding_medium">14dp&lt;/dimen></span>
+<span class="lineno">  29</span>     &lt;dimen name="padding_small">8dp&lt;/dimen>
+<span class="lineno">  30</span>     &lt;dimen name="padding_verySmall">3dp&lt;/dimen>
+</pre>
+<ul></ul><button id="Location19DivLink" onclick="reveal('Location19Div');" />+ 7 Additional Locations...</button>
+<div id="Location19Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:28</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:29</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:29</span>: <span class="message">The resource <code>R.dimen.padding_small</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  26</span> 
+<span class="lineno">  27</span>     &lt;dimen name="padding_large">18dp&lt;/dimen>
+<span class="lineno">  28</span>     &lt;dimen name="padding_medium">14dp&lt;/dimen>
+<span class="lineno">  29</span>     &lt;dimen <span class="errorspan">name="padding_small">8dp&lt;/dimen></span>
+<span class="lineno">  30</span>     &lt;dimen name="padding_verySmall">3dp&lt;/dimen>
+<span class="lineno">  31</span> 
+</pre>
+<ul></ul><button id="Location20DivLink" onclick="reveal('Location20Div');" />+ 7 Additional Locations...</button>
+<div id="Location20Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:29</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:30</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/dimens.xml">../../src/main/res/values/dimens.xml</a>:30</span>: <span class="message">The resource <code>R.dimen.padding_verySmall</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  27</span>     &lt;dimen name="padding_large">18dp&lt;/dimen>
+<span class="lineno">  28</span>     &lt;dimen name="padding_medium">14dp&lt;/dimen>
+<span class="lineno">  29</span>     &lt;dimen name="padding_small">8dp&lt;/dimen>
+<span class="lineno">  30</span>     &lt;dimen <span class="errorspan">name="padding_verySmall">3dp&lt;/dimen></span>
+<span class="lineno">  31</span> 
+<span class="lineno">  32</span> &lt;/resources>
+</pre>
+<ul></ul><button id="Location21DivLink" onclick="reveal('Location21Div');" />+ 7 Additional Locations...</button>
+<div id="Location21Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp/dimens.xml">../../src/main/res/values-sw320dp/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-hdpi/dimens.xml">../../src/main/res/values-sw320dp-hdpi/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xhdpi/dimens.xml">../../src/main/res/values-sw320dp-xhdpi/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw320dp-xxhdpi/dimens.xml">../../src/main/res/values-sw320dp-xxhdpi/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw480dp/dimens.xml">../../src/main/res/values-sw480dp/dimens.xml</a>:30</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw600dp/dimens.xml">../../src/main/res/values-sw600dp/dimens.xml</a>:31</span>
+<li> <span class="location"><a href="../../src/main/res/values-sw720dp/dimens.xml">../../src/main/res/values-sw720dp/dimens.xml</a>:31</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/xml/english_keyboard_6x6.xml">../../src/main/res/xml/english_keyboard_6x6.xml</a></span>: <span class="message">The resource <code>R.xml.english_keyboard_6x6</code> appears to be unused</span><br />
+<span class="location"><a href="../../src/main/res/xml/he_english_keyboard_6x6.xml">../../src/main/res/xml/he_english_keyboard_6x6.xml</a></span>: <span class="message">The resource <code>R.xml.he_english_keyboard_6x6</code> appears to be unused</span><br />
+<span class="location"><a href="../../src/main/res/mipmap-xxxhdpi/hebook_icon.png">../../src/main/res/mipmap-xxxhdpi/hebook_icon.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-xxxhdpi/hebook_icon.png" /><span class="message">The resource <code>R.mipmap.hebook_icon</code> appears to be unused</span><br clear="right"/>
+<span class="location"><a href="../../src/main/res/mipmap-xxhdpi/hechinese.png">../../src/main/res/mipmap-xxhdpi/hechinese.png</a></span>: <span class="message">The resource <code>R.mipmap.hechinese</code> appears to be unused</span><br />
+<ul></ul><button id="Location25DivLink" onclick="reveal('Location25Div');" />+ 1 Additional Locations...</button>
+<div id="Location25Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xxxhdpi/hechinese.png">../../src/main/res/mipmap-xxxhdpi/hechinese.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xxhdpi/hechinese.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxhdpi/hechinese.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-xxxhdpi/hechinese.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxxhdpi/hechinese.png" /></a>
+</td></tr><tr><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/heinput.png">../../src/main/res/mipmap-hdpi/heinput.png</a></span>: <span class="message">The resource <code>R.mipmap.heinput</code> appears to be unused</span><br />
+<ul></ul><button id="Location26DivLink" onclick="reveal('Location26Div');" />+ 4 Additional Locations...</button>
+<div id="Location26Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-mdpi/heinput.png">../../src/main/res/mipmap-mdpi/heinput.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/heinput.png">../../src/main/res/mipmap-xhdpi/heinput.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xxhdpi/heinput.png">../../src/main/res/mipmap-xxhdpi/heinput.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xxxhdpi/heinput.png">../../src/main/res/mipmap-xxxhdpi/heinput.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/heinput.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/heinput.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/heinput.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/heinput.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-mdpi/heinput.png"><img border="0" align="top" src="../../src/main/res/mipmap-mdpi/heinput.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-xxhdpi/heinput.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxhdpi/heinput.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-xxxhdpi/heinput.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxxhdpi/heinput.png" /></a>
+</td></tr><tr><th></th><th></th><th></th><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/ic_action_search.png">../../src/main/res/mipmap-hdpi/ic_action_search.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-hdpi/ic_action_search.png" /><span class="message">The resource <code>R.mipmap.ic_action_search</code> appears to be unused</span><br clear="right"/>
+<span class="location"><a href="../../src/main/res/mipmap-xhdpi/ic_launcher.png">../../src/main/res/mipmap-xhdpi/ic_launcher.png</a></span>: <span class="message">The resource <code>R.mipmap.ic_launcher</code> appears to be unused</span><br />
+<ul></ul><button id="Location28DivLink" onclick="reveal('Location28Div');" />+ 2 Additional Locations...</button>
+<div id="Location28Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xxhdpi/ic_launcher.png">../../src/main/res/mipmap-xxhdpi/ic_launcher.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xxxhdpi/ic_launcher.png">../../src/main/res/mipmap-xxxhdpi/ic_launcher.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/ic_launcher.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-xxhdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxhdpi/ic_launcher.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-xxxhdpi/ic_launcher.png"><img border="0" align="top" src="../../src/main/res/mipmap-xxxhdpi/ic_launcher.png" /></a>
+</td></tr><tr><th></th><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-mdpi/icon_en_gb.png">../../src/main/res/mipmap-mdpi/icon_en_gb.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-mdpi/icon_en_gb.png" /><span class="message">The resource <code>R.mipmap.icon_en_gb</code> appears to be unused</span><br clear="right"/>
+<span class="location"><a href="../../src/main/res/mipmap-mdpi/icon_en_us.png">../../src/main/res/mipmap-mdpi/icon_en_us.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-mdpi/icon_en_us.png" /><span class="message">The resource <code>R.mipmap.icon_en_us</code> appears to be unused</span><br clear="right"/>
+<span class="location"><a href="../../src/main/res/xml/keyboard_6x6_horizontal.xml">../../src/main/res/xml/keyboard_6x6_horizontal.xml</a></span>: <span class="message">The resource <code>R.xml.keyboard_6x6_horizontal</code> appears to be unused</span><br />
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/navigation_back.png">../../src/main/res/mipmap-hdpi/navigation_back.png</a></span>: <span class="message">The resource <code>R.mipmap.navigation_back</code> appears to be unused</span><br />
+<ul></ul><button id="Location32DivLink" onclick="reveal('Location32Div');" />+ 2 Additional Locations...</button>
+<div id="Location32Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-mdpi/navigation_back.png">../../src/main/res/mipmap-mdpi/navigation_back.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/navigation_back.png">../../src/main/res/mipmap-xhdpi/navigation_back.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/navigation_back.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/navigation_back.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/navigation_back.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/navigation_back.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-mdpi/navigation_back.png"><img border="0" align="top" src="../../src/main/res/mipmap-mdpi/navigation_back.png" /></a>
+</td></tr><tr><th></th><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/mipmap-hdpi/navigation_forward.png">../../src/main/res/mipmap-hdpi/navigation_forward.png</a></span>: <span class="message">The resource <code>R.mipmap.navigation_forward</code> appears to be unused</span><br />
+<ul></ul><button id="Location33DivLink" onclick="reveal('Location33Div');" />+ 2 Additional Locations...</button>
+<div id="Location33Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/mipmap-mdpi/navigation_forward.png">../../src/main/res/mipmap-mdpi/navigation_forward.png</a></span>
+<li> <span class="location"><a href="../../src/main/res/mipmap-xhdpi/navigation_forward.png">../../src/main/res/mipmap-xhdpi/navigation_forward.png</a></span>
+</ul>
+</div><br/><br/>
+<table><tr><td><a href="../../src/main/res/mipmap-xhdpi/navigation_forward.png"><img border="0" align="top" src="../../src/main/res/mipmap-xhdpi/navigation_forward.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-hdpi/navigation_forward.png"><img border="0" align="top" src="../../src/main/res/mipmap-hdpi/navigation_forward.png" /></a>
+</td><td><a href="../../src/main/res/mipmap-mdpi/navigation_forward.png"><img border="0" align="top" src="../../src/main/res/mipmap-mdpi/navigation_forward.png" /></a>
+</td></tr><tr><th></th><th></th><th></th></tr>
+</table>
+<span class="location"><a href="../../src/main/res/xml/qwerty.xml">../../src/main/res/xml/qwerty.xml</a></span>: <span class="message">The resource <code>R.xml.qwerty</code> appears to be unused</span><br />
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:4</span>: <span class="message">The resource <code>R.string.hello_world</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;resources>
+<span class="lineno">   2</span>     &lt;string name="app_name">HeLibrary&lt;/string>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string <span class="errorspan">name="hello_world">Hello world!&lt;/string></span>
+<span class="lineno">   5</span>     &lt;string name="action_settings">Settings&lt;/string>
+<span class="lineno">   6</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:5</span>: <span class="message">The resource <code>R.string.action_settings</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   2</span>     &lt;string name="app_name">HeLibrary&lt;/string>
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     &lt;string name="hello_world">Hello world!&lt;/string>
+<span class="lineno">   5</span>     &lt;string <span class="errorspan">name="action_settings">Settings&lt;/string></span>
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     &lt;string name="settings_name">Settings&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:7</span>: <span class="message">The resource <code>R.string.settings_name</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   4</span>     &lt;string name="hello_world">Hello world!&lt;/string>
+<span class="lineno">   5</span>     &lt;string name="action_settings">Settings&lt;/string>
+<span class="lineno">   6</span> 
+<span class="lineno">   7</span>     &lt;string <span class="errorspan">name="settings_name">Settings&lt;/string></span>
+<span class="lineno">   8</span> 
+<span class="lineno">   9</span>     &lt;!-- Symbols that are commonly considered word separators in this language -->
+</pre>
+<ul></ul><button id="Location37DivLink" onclick="reveal('Location37Div');" />+ 1 Additional Locations...</button>
+<div id="Location37Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:3</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:10</span>: <span class="message">The resource <code>R.string.word_separators</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">   7</span>     &lt;string name="settings_name">Settings&lt;/string>
+<span class="lineno">   8</span> 
+<span class="lineno">   9</span>     &lt;!-- Symbols that are commonly considered word separators in this language -->
+<span class="lineno">  10</span>     &lt;string <span class="errorspan">name="word_separators">\u0020.,;:!?\n()[]*&amp;amp;@{}/&amp;lt;&amp;gt;_+=|&amp;quot;&lt;/string></span>
+<span class="lineno">  11</span> 
+<span class="lineno">  12</span>     &lt;string name="label_back_key">Back&lt;/string>
+</pre>
+<ul></ul><button id="Location38DivLink" onclick="reveal('Location38Div');" />+ 1 Additional Locations...</button>
+<div id="Location38Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:6</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:13</span>: <span class="message">The resource <code>R.string.label_abc</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  10</span>     &lt;string name="word_separators">\u0020.,;:!?\n()[]*&amp;amp;@{}/&amp;lt;&amp;gt;_+=|&amp;quot;&lt;/string>
+<span class="lineno">  11</span> 
+<span class="lineno">  12</span>     &lt;string name="label_back_key">Back&lt;/string>
+<span class="lineno">  13</span>     &lt;string <span class="errorspan">name="label_abc">ABC&lt;/string></span>
+<span class="lineno">  14</span>     &lt;string name="label_cancel">Cancel&lt;/string>
+<span class="lineno">  15</span>     &lt;string name="label_mode">Mode&lt;/string>
+</pre>
+<ul></ul><button id="Location39DivLink" onclick="reveal('Location39Div');" />+ 1 Additional Locations...</button>
+<div id="Location39Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:9</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:16</span>: <span class="message">The resource <code>R.string.label_pinYin</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  13</span>     &lt;string name="label_abc">ABC&lt;/string>
+<span class="lineno">  14</span>     &lt;string name="label_cancel">Cancel&lt;/string>
+<span class="lineno">  15</span>     &lt;string name="label_mode">Mode&lt;/string>
+<span class="lineno">  16</span>     &lt;string <span class="errorspan">name="label_pinYin">PinYin&lt;/string></span>
+<span class="lineno">  17</span> 
+<span class="lineno">  18</span>     &lt;!-- Labels on soft keys -->
+</pre>
+<ul></ul><button id="Location40DivLink" onclick="reveal('Location40Div');" />+ 1 Additional Locations...</button>
+<div id="Location40Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:12</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:18</span>: <span class="message">The resource <code>R.string.title_activity_search</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  15</span>     &lt;string name="label_next_key">&#19979;&#19968;&#27493;&lt;/string>
+<span class="lineno">  16</span>     &lt;string name="label_send_key">&#21457;&#36865;&lt;/string>
+<span class="lineno">  17</span> 
+<span class="lineno">  18</span> 	&lt;string <span class="errorspan">name="title_activity_search">&#25628;&#32034;&#12298;&#21644;&#30721;&#20013;&#25991;&#12299;&lt;/string></span>
+<span class="lineno">  19</span> 
+<span class="lineno">  20</span> 	&lt;string name="menu_repeat">&#37325;&#22797;&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:25</span>: <span class="message">The resource <code>R.string.menu_repeat</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  22</span>     &lt;string name="label_send_key">Send&lt;/string>
+<span class="lineno">  23</span> 
+<span class="lineno">  24</span> 
+<span class="lineno">  25</span>     &lt;string <span class="errorspan">name="menu_repeat">Repeat&lt;/string></span>
+<span class="lineno">  26</span>     &lt;string name="menu_punctuation">Punctuation&lt;/string>
+<span class="lineno">  27</span>     &lt;string name="menu_math_symbol">Math Symbol&lt;/string>
+</pre>
+<ul></ul><button id="Location42DivLink" onclick="reveal('Location42Div');" />+ 1 Additional Locations...</button>
+<div id="Location42Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:20</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:26</span>: <span class="message">The resource <code>R.string.menu_punctuation</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  23</span> 
+<span class="lineno">  24</span> 
+<span class="lineno">  25</span>     &lt;string name="menu_repeat">Repeat&lt;/string>
+<span class="lineno">  26</span>     &lt;string <span class="errorspan">name="menu_punctuation">Punctuation&lt;/string></span>
+<span class="lineno">  27</span>     &lt;string name="menu_math_symbol">Math Symbol&lt;/string>
+<span class="lineno">  28</span>     &lt;string name="menu_number">Number&lt;/string>
+</pre>
+<ul></ul><button id="Location43DivLink" onclick="reveal('Location43Div');" />+ 1 Additional Locations...</button>
+<div id="Location43Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:21</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:27</span>: <span class="message">The resource <code>R.string.menu_math_symbol</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  24</span> 
+<span class="lineno">  25</span>     &lt;string name="menu_repeat">Repeat&lt;/string>
+<span class="lineno">  26</span>     &lt;string name="menu_punctuation">Punctuation&lt;/string>
+<span class="lineno">  27</span>     &lt;string <span class="errorspan">name="menu_math_symbol">Math Symbol&lt;/string></span>
+<span class="lineno">  28</span>     &lt;string name="menu_number">Number&lt;/string>
+<span class="lineno">  29</span>     &lt;string name="menu_english_char">English Char&lt;/string>
+</pre>
+<ul></ul><button id="Location44DivLink" onclick="reveal('Location44Div');" />+ 1 Additional Locations...</button>
+<div id="Location44Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:22</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:28</span>: <span class="message">The resource <code>R.string.menu_number</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  25</span>     &lt;string name="menu_repeat">Repeat&lt;/string>
+<span class="lineno">  26</span>     &lt;string name="menu_punctuation">Punctuation&lt;/string>
+<span class="lineno">  27</span>     &lt;string name="menu_math_symbol">Math Symbol&lt;/string>
+<span class="lineno">  28</span>     &lt;string <span class="errorspan">name="menu_number">Number&lt;/string></span>
+<span class="lineno">  29</span>     &lt;string name="menu_english_char">English Char&lt;/string>
+<span class="lineno">  30</span> 
+</pre>
+<ul></ul><button id="Location45DivLink" onclick="reveal('Location45Div');" />+ 1 Additional Locations...</button>
+<div id="Location45Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:23</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:29</span>: <span class="message">The resource <code>R.string.menu_english_char</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  26</span>     &lt;string name="menu_punctuation">Punctuation&lt;/string>
+<span class="lineno">  27</span>     &lt;string name="menu_math_symbol">Math Symbol&lt;/string>
+<span class="lineno">  28</span>     &lt;string name="menu_number">Number&lt;/string>
+<span class="lineno">  29</span>     &lt;string <span class="errorspan">name="menu_english_char">English Char&lt;/string></span>
+<span class="lineno">  30</span> 
+<span class="lineno">  31</span>     &lt;string name="menu_he_chinese_input">HeChinese&lt;/string>
+</pre>
+<ul></ul><button id="Location46DivLink" onclick="reveal('Location46Div');" />+ 1 Additional Locations...</button>
+<div id="Location46Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:24</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:31</span>: <span class="message">The resource <code>R.string.menu_he_chinese_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  28</span>     &lt;string name="menu_number">Number&lt;/string>
+<span class="lineno">  29</span>     &lt;string name="menu_english_char">English Char&lt;/string>
+<span class="lineno">  30</span> 
+<span class="lineno">  31</span>     &lt;string <span class="errorspan">name="menu_he_chinese_input">HeChinese&lt;/string></span>
+<span class="lineno">  32</span>     &lt;string name="menu_pinyin_input">PinYin&lt;/string>
+<span class="lineno">  33</span>     &lt;string name="menu_symbol_input">Symbol&lt;/string>
+</pre>
+<ul></ul><button id="Location47DivLink" onclick="reveal('Location47Div');" />+ 1 Additional Locations...</button>
+<div id="Location47Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:26</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:32</span>: <span class="message">The resource <code>R.string.menu_pinyin_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  29</span>     &lt;string name="menu_english_char">English Char&lt;/string>
+<span class="lineno">  30</span> 
+<span class="lineno">  31</span>     &lt;string name="menu_he_chinese_input">HeChinese&lt;/string>
+<span class="lineno">  32</span>     &lt;string <span class="errorspan">name="menu_pinyin_input">PinYin&lt;/string></span>
+<span class="lineno">  33</span>     &lt;string name="menu_symbol_input">Symbol&lt;/string>
+<span class="lineno">  34</span>     &lt;string name="menu_number_input">Number&lt;/string>
+</pre>
+<ul></ul><button id="Location48DivLink" onclick="reveal('Location48Div');" />+ 1 Additional Locations...</button>
+<div id="Location48Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:27</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:33</span>: <span class="message">The resource <code>R.string.menu_symbol_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  30</span> 
+<span class="lineno">  31</span>     &lt;string name="menu_he_chinese_input">HeChinese&lt;/string>
+<span class="lineno">  32</span>     &lt;string name="menu_pinyin_input">PinYin&lt;/string>
+<span class="lineno">  33</span>     &lt;string <span class="errorspan">name="menu_symbol_input">Symbol&lt;/string></span>
+<span class="lineno">  34</span>     &lt;string name="menu_number_input">Number&lt;/string>
+<span class="lineno">  35</span>     &lt;string name="menu_he_english_input">HeEnglish Input&lt;/string>
+</pre>
+<ul></ul><button id="Location49DivLink" onclick="reveal('Location49Div');" />+ 1 Additional Locations...</button>
+<div id="Location49Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:28</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:34</span>: <span class="message">The resource <code>R.string.menu_number_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  31</span>     &lt;string name="menu_he_chinese_input">HeChinese&lt;/string>
+<span class="lineno">  32</span>     &lt;string name="menu_pinyin_input">PinYin&lt;/string>
+<span class="lineno">  33</span>     &lt;string name="menu_symbol_input">Symbol&lt;/string>
+<span class="lineno">  34</span>     &lt;string <span class="errorspan">name="menu_number_input">Number&lt;/string></span>
+<span class="lineno">  35</span>     &lt;string name="menu_he_english_input">HeEnglish Input&lt;/string>
+<span class="lineno">  36</span> 
+</pre>
+<ul></ul><button id="Location50DivLink" onclick="reveal('Location50Div');" />+ 1 Additional Locations...</button>
+<div id="Location50Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:29</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:35</span>: <span class="message">The resource <code>R.string.menu_he_english_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  32</span>     &lt;string name="menu_pinyin_input">PinYin&lt;/string>
+<span class="lineno">  33</span>     &lt;string name="menu_symbol_input">Symbol&lt;/string>
+<span class="lineno">  34</span>     &lt;string name="menu_number_input">Number&lt;/string>
+<span class="lineno">  35</span>     &lt;string <span class="errorspan">name="menu_he_english_input">HeEnglish Input&lt;/string></span>
+<span class="lineno">  36</span> 
+<span class="lineno">  37</span>     &lt;string name="menu_english_input">English&lt;/string>
+</pre>
+<ul></ul><button id="Location51DivLink" onclick="reveal('Location51Div');" />+ 1 Additional Locations...</button>
+<div id="Location51Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:30</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:37</span>: <span class="message">The resource <code>R.string.menu_english_input</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  34</span>     &lt;string name="menu_number_input">Number&lt;/string>
+<span class="lineno">  35</span>     &lt;string name="menu_he_english_input">HeEnglish Input&lt;/string>
+<span class="lineno">  36</span> 
+<span class="lineno">  37</span>     &lt;string <span class="errorspan">name="menu_english_input">English&lt;/string></span>
+<span class="lineno">  38</span> 
+<span class="lineno">  39</span>     &lt;string name="menu_use_simplified">Set to Simplified Chinese&lt;/string>
+</pre>
+<ul></ul><button id="Location52DivLink" onclick="reveal('Location52Div');" />+ 1 Additional Locations...</button>
+<div id="Location52Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:31</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:39</span>: <span class="message">The resource <code>R.string.menu_use_simplified</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  36</span> 
+<span class="lineno">  37</span>     &lt;string name="menu_english_input">English&lt;/string>
+<span class="lineno">  38</span> 
+<span class="lineno">  39</span>     &lt;string <span class="errorspan">name="menu_use_simplified">Set to Simplified Chinese&lt;/string></span>
+<span class="lineno">  40</span>     &lt;string name="menu_use_traditional">Set to Traditional Chinese&lt;/string>
+<span class="lineno">  41</span> 
+</pre>
+<ul></ul><button id="Location53DivLink" onclick="reveal('Location53Div');" />+ 1 Additional Locations...</button>
+<div id="Location53Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:33</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:40</span>: <span class="message">The resource <code>R.string.menu_use_traditional</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  37</span>     &lt;string name="menu_english_input">English&lt;/string>
+<span class="lineno">  38</span> 
+<span class="lineno">  39</span>     &lt;string name="menu_use_simplified">Set to Simplified Chinese&lt;/string>
+<span class="lineno">  40</span>     &lt;string <span class="errorspan">name="menu_use_traditional">Set to Traditional Chinese&lt;/string></span>
+<span class="lineno">  41</span> 
+<span class="lineno">  42</span>     &lt;string name="menu_use_small_collection">Set to Small Collection&lt;/string>
+</pre>
+<ul></ul><button id="Location54DivLink" onclick="reveal('Location54Div');" />+ 1 Additional Locations...</button>
+<div id="Location54Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:34</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:42</span>: <span class="message">The resource <code>R.string.menu_use_small_collection</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  39</span>     &lt;string name="menu_use_simplified">Set to Simplified Chinese&lt;/string>
+<span class="lineno">  40</span>     &lt;string name="menu_use_traditional">Set to Traditional Chinese&lt;/string>
+<span class="lineno">  41</span> 
+<span class="lineno">  42</span>     &lt;string <span class="errorspan">name="menu_use_small_collection">Set to Small Collection&lt;/string></span>
+<span class="lineno">  43</span>     &lt;string name="menu_use_big_collection">Set to Big Collection&lt;/string>
+<span class="lineno">  44</span> 
+</pre>
+<ul></ul><button id="Location55DivLink" onclick="reveal('Location55Div');" />+ 1 Additional Locations...</button>
+<div id="Location55Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:36</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:43</span>: <span class="message">The resource <code>R.string.menu_use_big_collection</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  40</span>     &lt;string name="menu_use_traditional">Set to Traditional Chinese&lt;/string>
+<span class="lineno">  41</span> 
+<span class="lineno">  42</span>     &lt;string name="menu_use_small_collection">Set to Small Collection&lt;/string>
+<span class="lineno">  43</span>     &lt;string <span class="errorspan">name="menu_use_big_collection">Set to Big Collection&lt;/string></span>
+<span class="lineno">  44</span> 
+<span class="lineno">  45</span>     &lt;string name="menu_turn_on_pinyin_prompt">Set PinYin Prompt On&lt;/string>
+</pre>
+<ul></ul><button id="Location56DivLink" onclick="reveal('Location56Div');" />+ 1 Additional Locations...</button>
+<div id="Location56Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:37</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:45</span>: <span class="message">The resource <code>R.string.menu_turn_on_pinyin_prompt</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  42</span>     &lt;string name="menu_use_small_collection">Set to Small Collection&lt;/string>
+<span class="lineno">  43</span>     &lt;string name="menu_use_big_collection">Set to Big Collection&lt;/string>
+<span class="lineno">  44</span> 
+<span class="lineno">  45</span>     &lt;string <span class="errorspan">name="menu_turn_on_pinyin_prompt">Set PinYin Prompt On&lt;/string></span>
+<span class="lineno">  46</span>     &lt;string name="menu_turn_off_pinyin_prompt">Set PinYin Prompt Off&lt;/string>
+<span class="lineno">  47</span> 
+</pre>
+<ul></ul><button id="Location57DivLink" onclick="reveal('Location57Div');" />+ 1 Additional Locations...</button>
+<div id="Location57Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:39</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:46</span>: <span class="message">The resource <code>R.string.menu_turn_off_pinyin_prompt</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  43</span>     &lt;string name="menu_use_big_collection">Set to Big Collection&lt;/string>
+<span class="lineno">  44</span> 
+<span class="lineno">  45</span>     &lt;string name="menu_turn_on_pinyin_prompt">Set PinYin Prompt On&lt;/string>
+<span class="lineno">  46</span>     &lt;string <span class="errorspan">name="menu_turn_off_pinyin_prompt">Set PinYin Prompt Off&lt;/string></span>
+<span class="lineno">  47</span> 
+<span class="lineno">  48</span>     &lt;string name="menu_save_setting">*Save Settings to System*&lt;/string>
+</pre>
+<ul></ul><button id="Location58DivLink" onclick="reveal('Location58Div');" />+ 1 Additional Locations...</button>
+<div id="Location58Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:40</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:48</span>: <span class="message">The resource <code>R.string.menu_save_setting</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  45</span>     &lt;string name="menu_turn_on_pinyin_prompt">Set PinYin Prompt On&lt;/string>
+<span class="lineno">  46</span>     &lt;string name="menu_turn_off_pinyin_prompt">Set PinYin Prompt Off&lt;/string>
+<span class="lineno">  47</span> 
+<span class="lineno">  48</span>     &lt;string <span class="errorspan">name="menu_save_setting">*Save Settings to System*&lt;/string></span>
+<span class="lineno">  49</span> 
+<span class="lineno">  50</span>     &lt;string name="menu_numpad">Set to 4x5 numpad&lt;/string>
+</pre>
+<ul></ul><button id="Location59DivLink" onclick="reveal('Location59Div');" />+ 1 Additional Locations...</button>
+<div id="Location59Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:42</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:50</span>: <span class="message">The resource <code>R.string.menu_numpad</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  47</span> 
+<span class="lineno">  48</span>     &lt;string name="menu_save_setting">*Save Settings to System*&lt;/string>
+<span class="lineno">  49</span> 
+<span class="lineno">  50</span>     &lt;string <span class="errorspan">name="menu_numpad">Set to 4x5 numpad&lt;/string></span>
+<span class="lineno">  51</span>     &lt;string name="menu_big_number_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+</pre>
+<ul></ul><button id="Location60DivLink" onclick="reveal('Location60Div');" />+ 1 Additional Locations...</button>
+<div id="Location60Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:44</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:51</span>: <span class="message">The resource <code>R.string.menu_big_number_keyboard</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  48</span>     &lt;string name="menu_save_setting">*Save Settings to System*&lt;/string>
+<span class="lineno">  49</span> 
+<span class="lineno">  50</span>     &lt;string name="menu_numpad">Set to 4x5 numpad&lt;/string>
+<span class="lineno">  51</span>     &lt;string <span class="errorspan">name="menu_big_number_keyboard">Set to 6x6 keyboard&lt;/string></span>
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  53</span> 
+</pre>
+<ul></ul><button id="Location61DivLink" onclick="reveal('Location61Div');" />+ 1 Additional Locations...</button>
+<div id="Location61Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:45</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:52</span>: <span class="message">The resource <code>R.string.menu_big_char_keyboard</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  49</span> 
+<span class="lineno">  50</span>     &lt;string name="menu_numpad">Set to 4x5 numpad&lt;/string>
+<span class="lineno">  51</span>     &lt;string name="menu_big_number_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  52</span>     &lt;string <span class="errorspan">name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string></span>
+<span class="lineno">  53</span> 
+<span class="lineno">  54</span>     &lt;string name="HeApp_Link">HeChinese Link&lt;/string>
+</pre>
+<ul></ul><button id="Location62DivLink" onclick="reveal('Location62Div');" />+ 1 Additional Locations...</button>
+<div id="Location62Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:46</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:54</span>: <span class="message">The resource <code>R.string.HeApp_Link</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  51</span>     &lt;string name="menu_big_number_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  53</span> 
+<span class="lineno">  54</span>     &lt;string <span class="errorspan">name="HeApp_Link">HeChinese Link&lt;/string></span>
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:55</span>: <span class="message">The resource <code>R.string.HeApp_ViewTitle</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  52</span>     &lt;string name="menu_big_char_keyboard">Set to 6x6 keyboard&lt;/string>
+<span class="lineno">  53</span> 
+<span class="lineno">  54</span>     &lt;string name="HeApp_Link">HeChinese Link&lt;/string>
+<span class="lineno">  55</span>     &lt;string <span class="errorspan">name="HeApp_ViewTitle">HeChinese Apps&lt;/string></span>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:57</span>: <span class="message">The resource <code>R.string.HePage_OnlineCourse</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  54</span>     &lt;string name="HeApp_Link">HeChinese Link&lt;/string>
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string></span>
+<span class="lineno">  58</span>     &lt;string name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string>
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:58</span>: <span class="message">The resource <code>R.string.HePage_OnlineCourse_Sub</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  55</span>     &lt;string name="HeApp_ViewTitle">HeChinese Apps&lt;/string>
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+<span class="lineno">  58</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string></span>
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+<span class="lineno">  60</span> 
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:59</span>: <span class="message">The resource <code>R.string.HePage_OnlineCourse_Link</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  56</span> 
+<span class="lineno">  57</span>     &lt;string name="HePage_OnlineCourse">HeChinese Online Courses&lt;/string>
+<span class="lineno">  58</span>     &lt;string name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string>
+<span class="lineno">  59</span>     &lt;string <span class="errorspan">name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string></span>
+<span class="lineno">  60</span> 
+<span class="lineno">  61</span>     &lt;string name="NumPad_CharBoard">Char&lt;/string>
+</pre>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:61</span>: <span class="message">The resource <code>R.string.NumPad_CharBoard</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  58</span>     &lt;string name="HePage_OnlineCourse_Sub">Please Check Online Courses&lt;/string>
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+<span class="lineno">  60</span> 
+<span class="lineno">  61</span>     &lt;string <span class="errorspan">name="NumPad_CharBoard">Char&lt;/string></span>
+<span class="lineno">  62</span>     &lt;string name="NumPad_Pause">Pause&lt;/string>
+<span class="lineno">  63</span>     &lt;string name="NumPad_Escape">Esc&lt;/string>
+</pre>
+<ul></ul><button id="Location68DivLink" onclick="reveal('Location68Div');" />+ 1 Additional Locations...</button>
+<div id="Location68Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:48</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:62</span>: <span class="message">The resource <code>R.string.NumPad_Pause</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  59</span>     &lt;string name="HePage_OnlineCourse_Link">http://www.HeZi.net/He/HeChinese/HTML/OnlineCourses.htm&lt;/string>
+<span class="lineno">  60</span> 
+<span class="lineno">  61</span>     &lt;string name="NumPad_CharBoard">Char&lt;/string>
+<span class="lineno">  62</span>     &lt;string <span class="errorspan">name="NumPad_Pause">Pause&lt;/string></span>
+<span class="lineno">  63</span>     &lt;string name="NumPad_Escape">Esc&lt;/string>
+<span class="lineno">  64</span>     &lt;string name="NumPad_Delete">Del&lt;/string>
+</pre>
+<ul></ul><button id="Location69DivLink" onclick="reveal('Location69Div');" />+ 1 Additional Locations...</button>
+<div id="Location69Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:49</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:63</span>: <span class="message">The resource <code>R.string.NumPad_Escape</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  60</span> 
+<span class="lineno">  61</span>     &lt;string name="NumPad_CharBoard">Char&lt;/string>
+<span class="lineno">  62</span>     &lt;string name="NumPad_Pause">Pause&lt;/string>
+<span class="lineno">  63</span>     &lt;string <span class="errorspan">name="NumPad_Escape">Esc&lt;/string></span>
+<span class="lineno">  64</span>     &lt;string name="NumPad_Delete">Del&lt;/string>
+<span class="lineno">  65</span>     &lt;string name="NumPad_Mode">Mode&lt;/string>
+</pre>
+<ul></ul><button id="Location70DivLink" onclick="reveal('Location70Div');" />+ 1 Additional Locations...</button>
+<div id="Location70Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:50</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:64</span>: <span class="message">The resource <code>R.string.NumPad_Delete</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  61</span>     &lt;string name="NumPad_CharBoard">Char&lt;/string>
+<span class="lineno">  62</span>     &lt;string name="NumPad_Pause">Pause&lt;/string>
+<span class="lineno">  63</span>     &lt;string name="NumPad_Escape">Esc&lt;/string>
+<span class="lineno">  64</span>     &lt;string <span class="errorspan">name="NumPad_Delete">Del&lt;/string></span>
+<span class="lineno">  65</span>     &lt;string name="NumPad_Mode">Mode&lt;/string>
+<span class="lineno">  66</span>     &lt;string name="NumPad_Char">Char&lt;/string>
+</pre>
+<ul></ul><button id="Location71DivLink" onclick="reveal('Location71Div');" />+ 1 Additional Locations...</button>
+<div id="Location71Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:51</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:65</span>: <span class="message">The resource <code>R.string.NumPad_Mode</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  62</span>     &lt;string name="NumPad_Pause">Pause&lt;/string>
+<span class="lineno">  63</span>     &lt;string name="NumPad_Escape">Esc&lt;/string>
+<span class="lineno">  64</span>     &lt;string name="NumPad_Delete">Del&lt;/string>
+<span class="lineno">  65</span>     &lt;string <span class="errorspan">name="NumPad_Mode">Mode&lt;/string></span>
+<span class="lineno">  66</span>     &lt;string name="NumPad_Char">Char&lt;/string>
+<span class="lineno">  67</span>     &lt;string name="NumPad_Num">123&lt;/string>
+</pre>
+<ul></ul><button id="Location72DivLink" onclick="reveal('Location72Div');" />+ 1 Additional Locations...</button>
+<div id="Location72Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:52</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:66</span>: <span class="message">The resource <code>R.string.NumPad_Char</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  63</span>     &lt;string name="NumPad_Escape">Esc&lt;/string>
+<span class="lineno">  64</span>     &lt;string name="NumPad_Delete">Del&lt;/string>
+<span class="lineno">  65</span>     &lt;string name="NumPad_Mode">Mode&lt;/string>
+<span class="lineno">  66</span>     &lt;string <span class="errorspan">name="NumPad_Char">Char&lt;/string></span>
+<span class="lineno">  67</span>     &lt;string name="NumPad_Num">123&lt;/string>
+<span class="lineno">  68</span>     &lt;string name="NumPad_Space">Space&lt;/string>
+</pre>
+<ul></ul><button id="Location73DivLink" onclick="reveal('Location73Div');" />+ 1 Additional Locations...</button>
+<div id="Location73Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:53</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:67</span>: <span class="message">The resource <code>R.string.NumPad_Num</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  64</span>     &lt;string name="NumPad_Delete">Del&lt;/string>
+<span class="lineno">  65</span>     &lt;string name="NumPad_Mode">Mode&lt;/string>
+<span class="lineno">  66</span>     &lt;string name="NumPad_Char">Char&lt;/string>
+<span class="lineno">  67</span>     &lt;string <span class="errorspan">name="NumPad_Num">123&lt;/string></span>
+<span class="lineno">  68</span>     &lt;string name="NumPad_Space">Space&lt;/string>
+<span class="lineno">  69</span>     &lt;string name="NumPad_Return">Return&lt;/string>
+</pre>
+<ul></ul><button id="Location74DivLink" onclick="reveal('Location74Div');" />+ 1 Additional Locations...</button>
+<div id="Location74Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:54</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:68</span>: <span class="message">The resource <code>R.string.NumPad_Space</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  65</span>     &lt;string name="NumPad_Mode">Mode&lt;/string>
+<span class="lineno">  66</span>     &lt;string name="NumPad_Char">Char&lt;/string>
+<span class="lineno">  67</span>     &lt;string name="NumPad_Num">123&lt;/string>
+<span class="lineno">  68</span>     &lt;string <span class="errorspan">name="NumPad_Space">Space&lt;/string></span>
+<span class="lineno">  69</span>     &lt;string name="NumPad_Return">Return&lt;/string>
+<span class="lineno">  70</span>     &lt;string name="NumPad_Backspace">Back&lt;/string>
+</pre>
+<ul></ul><button id="Location75DivLink" onclick="reveal('Location75Div');" />+ 1 Additional Locations...</button>
+<div id="Location75Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:56</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:69</span>: <span class="message">The resource <code>R.string.NumPad_Return</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  66</span>     &lt;string name="NumPad_Char">Char&lt;/string>
+<span class="lineno">  67</span>     &lt;string name="NumPad_Num">123&lt;/string>
+<span class="lineno">  68</span>     &lt;string name="NumPad_Space">Space&lt;/string>
+<span class="lineno">  69</span>     &lt;string <span class="errorspan">name="NumPad_Return">Return&lt;/string></span>
+<span class="lineno">  70</span>     &lt;string name="NumPad_Backspace">Back&lt;/string>
+<span class="lineno">  71</span>     &lt;string name="NumPad_Reset">Reset&lt;/string>
+</pre>
+<ul></ul><button id="Location76DivLink" onclick="reveal('Location76Div');" />+ 1 Additional Locations...</button>
+<div id="Location76Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:57</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:70</span>: <span class="message">The resource <code>R.string.NumPad_Backspace</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  67</span>     &lt;string name="NumPad_Num">123&lt;/string>
+<span class="lineno">  68</span>     &lt;string name="NumPad_Space">Space&lt;/string>
+<span class="lineno">  69</span>     &lt;string name="NumPad_Return">Return&lt;/string>
+<span class="lineno">  70</span>     &lt;string <span class="errorspan">name="NumPad_Backspace">Back&lt;/string></span>
+<span class="lineno">  71</span>     &lt;string name="NumPad_Reset">Reset&lt;/string>
+<span class="lineno">  72</span>     &lt;string name="NumPad_Easy">Easy&lt;/string>
+</pre>
+<ul></ul><button id="Location77DivLink" onclick="reveal('Location77Div');" />+ 1 Additional Locations...</button>
+<div id="Location77Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:58</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:71</span>: <span class="message">The resource <code>R.string.NumPad_Reset</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  68</span>     &lt;string name="NumPad_Space">Space&lt;/string>
+<span class="lineno">  69</span>     &lt;string name="NumPad_Return">Return&lt;/string>
+<span class="lineno">  70</span>     &lt;string name="NumPad_Backspace">Back&lt;/string>
+<span class="lineno">  71</span>     &lt;string <span class="errorspan">name="NumPad_Reset">Reset&lt;/string></span>
+<span class="lineno">  72</span>     &lt;string name="NumPad_Easy">Easy&lt;/string>
+<span class="lineno">  73</span>     &lt;string name="NumPad_Normal">Normal&lt;/string>
+</pre>
+<ul></ul><button id="Location78DivLink" onclick="reveal('Location78Div');" />+ 1 Additional Locations...</button>
+<div id="Location78Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:59</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:72</span>: <span class="message">The resource <code>R.string.NumPad_Easy</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  69</span>     &lt;string name="NumPad_Return">Return&lt;/string>
+<span class="lineno">  70</span>     &lt;string name="NumPad_Backspace">Back&lt;/string>
+<span class="lineno">  71</span>     &lt;string name="NumPad_Reset">Reset&lt;/string>
+<span class="lineno">  72</span>     &lt;string <span class="errorspan">name="NumPad_Easy">Easy&lt;/string></span>
+<span class="lineno">  73</span>     &lt;string name="NumPad_Normal">Normal&lt;/string>
+<span class="lineno">  74</span>     &lt;string name="NumPad_Hard">Hard&lt;/string>
+</pre>
+<ul></ul><button id="Location79DivLink" onclick="reveal('Location79Div');" />+ 1 Additional Locations...</button>
+<div id="Location79Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:63</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:73</span>: <span class="message">The resource <code>R.string.NumPad_Normal</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  70</span>     &lt;string name="NumPad_Backspace">Back&lt;/string>
+<span class="lineno">  71</span>     &lt;string name="NumPad_Reset">Reset&lt;/string>
+<span class="lineno">  72</span>     &lt;string name="NumPad_Easy">Easy&lt;/string>
+<span class="lineno">  73</span>     &lt;string <span class="errorspan">name="NumPad_Normal">Normal&lt;/string></span>
+<span class="lineno">  74</span>     &lt;string name="NumPad_Hard">Hard&lt;/string>
+<span class="lineno">  75</span>     &lt;string name="NumPad_Sound_Off">OFF Sound&lt;/string>
+</pre>
+<ul></ul><button id="Location80DivLink" onclick="reveal('Location80Div');" />+ 1 Additional Locations...</button>
+<div id="Location80Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:64</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:74</span>: <span class="message">The resource <code>R.string.NumPad_Hard</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  71</span>     &lt;string name="NumPad_Reset">Reset&lt;/string>
+<span class="lineno">  72</span>     &lt;string name="NumPad_Easy">Easy&lt;/string>
+<span class="lineno">  73</span>     &lt;string name="NumPad_Normal">Normal&lt;/string>
+<span class="lineno">  74</span>     &lt;string <span class="errorspan">name="NumPad_Hard">Hard&lt;/string></span>
+<span class="lineno">  75</span>     &lt;string name="NumPad_Sound_Off">OFF Sound&lt;/string>
+<span class="lineno">  76</span>     &lt;string name="NumPad_Sound_On">ON Sound&lt;/string>
+</pre>
+<ul></ul><button id="Location81DivLink" onclick="reveal('Location81Div');" />+ 1 Additional Locations...</button>
+<div id="Location81Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:65</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:75</span>: <span class="message">The resource <code>R.string.NumPad_Sound_Off</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  72</span>     &lt;string name="NumPad_Easy">Easy&lt;/string>
+<span class="lineno">  73</span>     &lt;string name="NumPad_Normal">Normal&lt;/string>
+<span class="lineno">  74</span>     &lt;string name="NumPad_Hard">Hard&lt;/string>
+<span class="lineno">  75</span>     &lt;string <span class="errorspan">name="NumPad_Sound_Off">OFF Sound&lt;/string></span>
+<span class="lineno">  76</span>     &lt;string name="NumPad_Sound_On">ON Sound&lt;/string>
+<span class="lineno">  77</span>     &lt;string name="NumPad_Sound_OffOn">Sound Off/On&lt;/string>
+</pre>
+<ul></ul><button id="Location82DivLink" onclick="reveal('Location82Div');" />+ 1 Additional Locations...</button>
+<div id="Location82Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:60</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:76</span>: <span class="message">The resource <code>R.string.NumPad_Sound_On</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  73</span>     &lt;string name="NumPad_Normal">Normal&lt;/string>
+<span class="lineno">  74</span>     &lt;string name="NumPad_Hard">Hard&lt;/string>
+<span class="lineno">  75</span>     &lt;string name="NumPad_Sound_Off">OFF Sound&lt;/string>
+<span class="lineno">  76</span>     &lt;string <span class="errorspan">name="NumPad_Sound_On">ON Sound&lt;/string></span>
+<span class="lineno">  77</span>     &lt;string name="NumPad_Sound_OffOn">Sound Off/On&lt;/string>
+<span class="lineno">  78</span>     &lt;string name="NumPad_Help">&#65311;&lt;/string>
+</pre>
+<ul></ul><button id="Location83DivLink" onclick="reveal('Location83Div');" />+ 1 Additional Locations...</button>
+<div id="Location83Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:61</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:77</span>: <span class="message">The resource <code>R.string.NumPad_Sound_OffOn</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  74</span>     &lt;string name="NumPad_Hard">Hard&lt;/string>
+<span class="lineno">  75</span>     &lt;string name="NumPad_Sound_Off">OFF Sound&lt;/string>
+<span class="lineno">  76</span>     &lt;string name="NumPad_Sound_On">ON Sound&lt;/string>
+<span class="lineno">  77</span>     &lt;string <span class="errorspan">name="NumPad_Sound_OffOn">Sound Off/On&lt;/string></span>
+<span class="lineno">  78</span>     &lt;string name="NumPad_Help">&#65311;&lt;/string>
+<span class="lineno">  79</span> 
+</pre>
+<ul></ul><button id="Location84DivLink" onclick="reveal('Location84Div');" />+ 1 Additional Locations...</button>
+<div id="Location84Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:62</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:78</span>: <span class="message">The resource <code>R.string.NumPad_Help</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  75</span>     &lt;string name="NumPad_Sound_Off">OFF Sound&lt;/string>
+<span class="lineno">  76</span>     &lt;string name="NumPad_Sound_On">ON Sound&lt;/string>
+<span class="lineno">  77</span>     &lt;string name="NumPad_Sound_OffOn">Sound Off/On&lt;/string>
+<span class="lineno">  78</span>     &lt;string <span class="errorspan">name="NumPad_Help">&#65311;&lt;/string></span>
+<span class="lineno">  79</span> 
+<span class="lineno">  80</span> 
+</pre>
+<ul></ul><button id="Location85DivLink" onclick="reveal('Location85Div');" />+ 1 Additional Locations...</button>
+<div id="Location85Div" style="display: none">
+Additional locations: <ul>
+<li> <span class="location"><a href="../../src/main/res/values-zh/strings.xml">../../src/main/res/values-zh/strings.xml</a>:66</span>
+</ul>
+</div><br/><br/>
+<span class="location"><a href="../../src/main/res/values/strings.xml">../../src/main/res/values/strings.xml</a>:82</span>: <span class="message">The resource <code>R.string.hello_blank_fragment</code> appears to be unused</span><br /><pre class="errorlines">
+<span class="lineno">  79</span> 
+<span class="lineno">  80</span> 
+<span class="lineno">  81</span> &lt;!-- TODO: Remove or change this placeholder text -->
+<span class="lineno">  82</span>     &lt;string <span class="errorspan">name="hello_blank_fragment">Hello blank fragment&lt;/string></span>
+<span class="lineno">  83</span> 
+<span class="lineno">  84</span> &lt;/resources>
+</pre>
+<span class="location"><a href="../../src/main/res/mipmap-mdpi/sym_keyboard_language_switch.png">../../src/main/res/mipmap-mdpi/sym_keyboard_language_switch.png</a></span>: <img class="embedimage" align="right" src="../../src/main/res/mipmap-mdpi/sym_keyboard_language_switch.png" /><span class="message">The resource <code>R.mipmap.sym_keyboard_language_switch</code> appears to be unused</span><br clear="right"/>
+<span class="location"><a href="../../src/main/res/xml/symbols.xml">../../src/main/res/xml/symbols.xml</a></span>: <span class="message">The resource <code>R.xml.symbols</code> appears to be unused</span><br />
+<span class="location"><a href="../../src/main/res/xml/symbols_shift.xml">../../src/main/res/xml/symbols_shift.xml</a></span>: <span class="message">The resource <code>R.xml.symbols_shift</code> appears to be unused</span><br />
+</div>
+</div>
+<div class="metadata">Priority: 3 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Unused resources.</div>
+<div class="explanation">
+Unused resources make applications larger and slow down builds.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedResources" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="Usability"></a>
+<div class="category"><a href="#" title="Return to top">Usability</a><div class="categorySeparator"></div>
+</div>
+<a name="GoogleAppIndexingWarning"></a>
+<div class="issue">
+<div class="id"><a href="#" title="Return to top">GoogleAppIndexingWarning: Missing support for Google App Indexing</a><div class="issueSeparator"></div>
+</div>
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:4</span>: <span class="message">App is not indexable by Google Search; consider adding at least one Activity with an ACTION-VIEW intent-filler. See issue explanation for more details.</span><br /><pre class="errorlines">
+<span class="lineno">   1</span> &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<span class="lineno">   2</span>     package="net.HeZi.Android.HeLibrary">
+<span class="lineno">   3</span> 
+<span class="lineno">   4</span>     <span class="errorspan">&lt;application android:allowBackup="true" android:label="@string/app_name"></span>
+<span class="lineno">   5</span> 
+<span class="lineno">   6</span>     &lt;/application>
+</pre>
+</div>
+<div class="metadata">Priority: 5 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Missing support for Google App Indexing.</div>
+<div class="explanation">
+Adds deep links to get your app into the Google index, to get installs and traffic to your app from Google Search.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/AppIndexing/AndroidStudio">https://g.co/AppIndexing/AndroidStudio</a>
+</div><br/>To suppress this error, use the issue id "GoogleAppIndexingWarning" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="MissingIssues"></a>
+<div class="category">Disabled Checks<div class="categorySeparator"></div>
+</div>
+The following issues were not run by lint, either because the check is not enabled by default, or because it was disabled with a command line flag or via one or more lint.xml configuration files in the project directories.
+<br/><br/>
+<a name="BackButton"></a>
+<div class="issue">
+<div class="id">BackButton<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Back button.</div>
+<div class="explanation">
+According to the Android Design Guide,<br/>
+<br/>
+"Other platforms use an explicit back button with label to allow the user to navigate up the application's hierarchy. Instead, Android uses the main action bar's app icon for hierarchical navigation and the navigation bar's back button for temporal navigation."<br/>
+This check is not very sophisticated (it just looks for buttons with the label "Back"), so it is disabled by default to not trigger on common scenarios like pairs of Back/Next buttons to paginate through screens.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/patterns/pure-android.html">http://developer.android.com/design/patterns/pure-android.html</a>
+</div><br/>To suppress this error, use the issue id "BackButton" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="EasterEgg"></a>
+<div class="issue">
+<div class="id">EasterEgg<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 6 / 10<br/>
+Category: Security</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Code contains easter egg.</div>
+<div class="explanation">
+An "easter egg" is code deliberately hidden in the code, both from potential users and even from other developers. This lint check looks for code which looks like it may be hidden from sight.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "EasterEgg" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="FieldGetter"></a>
+<div class="issue">
+<div class="id">FieldGetter<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Using getter instead of field.</div>
+<div class="explanation">
+Accessing a field within the class that defines a getter for that field is at least 3 times faster than calling the getter. For simple getters that do nothing other than return the field, you might want to just reference the local field directly instead.<br/>
+<br/>
+<b>NOTE</b>: As of Android 2.3 (Gingerbread), this optimization is performed automatically by Dalvik, so there is no need to change your code; this is only relevant if you are targeting older versions of Android.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/guide/practices/design/performance.html#internal_get_set">http://developer.android.com/guide/practices/design/performance.html#internal_get_set</a>
+</div><br/>To suppress this error, use the issue id "FieldGetter" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="GoogleAppIndexingApiWarning"></a>
+<div class="issue">
+<div class="id">GoogleAppIndexingApiWarning<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Missing support for Google App Indexing Api.</div>
+<div class="explanation">
+Adds deep links to get your app into the Google index, to get installs and traffic to your app from Google Search.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://g.co/AppIndexing/AndroidStudio">https://g.co/AppIndexing/AndroidStudio</a>
+</div><br/>To suppress this error, use the issue id "GoogleAppIndexingApiWarning" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="IconExpectedSize"></a>
+<div class="issue">
+<div class="id">IconExpectedSize<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Icons</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Icon has incorrect size.</div>
+<div class="explanation">
+There are predefined sizes (for each density) for launcher icons. You should follow these conventions to make sure your icons fit in with the overall look of the platform.
+</div>
+<br/><div class="moreinfo">More info: <a href="http://developer.android.com/design/style/iconography.html">http://developer.android.com/design/style/iconography.html</a>
+</div><br/>To suppress this error, use the issue id "IconExpectedSize" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="LogConditional"></a>
+<div class="issue">
+<div class="id">LogConditional<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Unconditional Logging Calls.</div>
+<div class="explanation">
+The BuildConfig class (available in Tools 17) provides a constant, "DEBUG", which indicates whether the code is being built in release mode or in debug mode. In release mode, you typically want to strip out all the logging calls. Since the compiler will automatically remove all code which is inside a "if (false)" check, surrounding your logging calls with a check for BuildConfig.DEBUG is a good idea.<br/>
+<br/>
+If you <b>really</b> intend for the logging to be present in release mode, you can suppress this warning with a @SuppressLint annotation for the intentional logging calls.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "LogConditional" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="MangledCRLF"></a>
+<div class="issue">
+<div class="id">MangledCRLF<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 2 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="error">Error</span><div class="summary">
+Explanation: Mangled file line endings.</div>
+<div class="explanation">
+On Windows, line endings are typically recorded as carriage return plus newline: \r\n.<br/>
+<br/>
+This detector looks for invalid line endings with repeated carriage return characters (without newlines). Previous versions of the ADT plugin could accidentally introduce these into the file, and when editing the file, the editor could produce confusing visual artifacts.
+</div>
+<br/><div class="moreinfo">More info: <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421">https://bugs.eclipse.org/bugs/show_bug.cgi?id=375421</a>
+</div><br/>To suppress this error, use the issue id "MangledCRLF" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NegativeMargin"></a>
+<div class="issue">
+<div class="id">NegativeMargin<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Negative Margins.</div>
+<div class="explanation">
+Margin values should be positive. Negative values are generally a sign that you are making assumptions about views surrounding the current one, or may be tempted to turn off child clipping to allow a view to escape its parent. Turning off child clipping to do this not only leads to poor graphical performance, it also results in wrong touch event handling since touch events are based strictly on a chain of parent-rect hit tests. Finally, making assumptions about the size of strings can lead to localization problems.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NegativeMargin" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="NewerVersionAvailable"></a>
+<div class="issue">
+<div class="id">NewerVersionAvailable<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 4 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Newer Library Versions Available.</div>
+<div class="explanation">
+This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "NewerVersionAvailable" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="SelectableText"></a>
+<div class="issue">
+<div class="id">SelectableText<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 7 / 10<br/>
+Category: Usability</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Dynamic text should probably be selectable.</div>
+<div class="explanation">
+If a <code>&lt;TextView></code> is used to display data, the user might want to copy that data and paste it elsewhere. To allow this, the <code>&lt;TextView></code> should specify <code>android:textIsSelectable="true"</code>.<br/>
+<br/>
+This lint check looks for TextViews which are likely to be displaying data: views whose text is set dynamically. This value will be ignored on platforms older than API 11, so it is okay to set it regardless of your <code>minSdkVersion</code>.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "SelectableText" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="StopShip"></a>
+<div class="issue">
+<div class="id">StopShip<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 10 / 10<br/>
+Category: Correctness</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Code contains <code>STOPSHIP</code> marker.</div>
+<div class="explanation">
+Using the comment <code>// STOPSHIP</code> can be used to flag code that is incomplete but checked in. This comment marker can be used to indicate that the code should not be shipped until the issue is addressed, and lint will look for these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "StopShip" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="TypographyQuotes"></a>
+<div class="issue">
+<div class="id">TypographyQuotes<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Note: This issue has an associated quickfix operation in Eclipse/ADT & Android Studio/IntelliJ&nbsp;<img alt="Fix" border="0" align="top" src="lint-results_files/lint-run.png" />
+<br>
+Disabled By: Default<br/>
+Priority: 5 / 10<br/>
+Category: Usability:Typography</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Straight quotes can be replaced with curvy quotes.</div>
+<div class="explanation">
+Straight single quotes and double quotes, when used as a pair, can be replaced by "curvy quotes" (or directional quotes). This can make the text more readable.<br/>
+<br/>
+Note that you should never use grave accents and apostrophes to quote, `like this'.<br/>
+<br/>
+(Also note that you should not use curvy quotes for code fragments.)
+</div>
+<br/><div class="moreinfo">More info: <a href="http://en.wikipedia.org/wiki/Quotation_mark">http://en.wikipedia.org/wiki/Quotation_mark</a>
+</div><br/>To suppress this error, use the issue id "TypographyQuotes" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+<a name="UnusedIds"></a>
+<div class="issue">
+<div class="id">UnusedIds<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+Priority: 1 / 10<br/>
+Category: Performance</div>
+Severity: <span class="warning">Warning</span><div class="summary">
+Explanation: Unused id.</div>
+<div class="explanation">
+This resource id definition appears not to be needed since it is not referenced from anywhere. Having id definitions, even if unused, is not necessarily a bad idea since they make working on layouts and menus easier, so there is not a strong reason to delete these.
+</div>
+<br/><div class="moreinfo">More info: </div><br/>To suppress this error, use the issue id "UnusedIds" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+</div>
+
+<a name="SuppressInfo"></a>
+<div class="category">Suppressing Warnings and Errors<div class="categorySeparator"></div>
+</div>
+Lint errors can be suppressed in a variety of ways:<br/>
+<br/>
+1. With a <code>@SuppressLint</code> annotation in the Java code<br/>
+2. With a <code>tools:ignore</code> attribute in the XML file<br/>
+3. With ignore flags specified in the <code>build.gradle</code> file, as explained below<br/>
+4. With a <code>lint.xml</code> configuration file in the project<br/>
+5. With a <code>lint.xml</code> configuration file passed to lint via the --config flag<br/>
+6. With the --ignore flag passed to lint.<br/>
+<br/>
+To suppress a lint warning with an annotation, add a <code>@SuppressLint("id")</code> annotation on the class, method or variable declaration closest to the warning instance you want to disable. The id can be one or more issue id's, such as <code>"UnusedResources"</code> or <code>{"UnusedResources","UnusedIds"}</code>, or it can be <code>"all"</code> to suppress all lint warnings in the given scope.<br/>
+<br/>
+To suppress a lint warning in an XML file, add a <code>tools:ignore="id"</code> attribute on the element containing the error, or one of its surrounding elements. You also need to define the namespace for the tools prefix on the root element in your document, next to the <code>xmlns:android</code> declaration:<br/>
+<code>xmlns:tools="http://schemas.android.com/tools"</code><br/>
+<br/>
+To suppress a lint warning in a <code>build.gradle</code> file, add a section like this:<br/>
+<br/>
+android {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;lintOptions {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disable 'TypographyFractions','TypographyQuotes'<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+Here we specify a comma separated list of issue id's after the disable command. You can also use <code>warning</code> or <code>error</code> instead of <code>disable</code> to change the severity of issues.<br/>
+<br/>
+To suppress lint warnings with a configuration XML file, create a file named <code>lint.xml</code> and place it at the root directory of the project in which it applies.<br/>
+<br/>
+The format of the <code>lint.xml</code> file is something like the following:<br/>
+<br/>
+&lt;?xml version="1.0" encoding="UTF-8"?><br/>
+&lt;lint><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Disable this given check in this project --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="IconMissingDensityFolder" severity="ignore" /><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Ignore the ObsoleteLayoutParam issue in the given files --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="ObsoleteLayoutParam"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout/activation.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout-xlarge/activation.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/issue><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Ignore the UselessLeaf issue in the given file --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="UselessLeaf"><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ignore path="res/layout/main.xml" /><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/issue><br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Change the severity of hardcoded strings to "error" --><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;issue id="HardcodedText" severity="error" /><br/>
+&lt;/lint><br/>
+<br/>
+To suppress lint checks from the command line, pass the --ignore flag with a comma separated list of ids to be suppressed, such as:<br/>
+<code>$ lint --ignore UnusedResources,UselessLeaf /my/project/path</code><br/>
+<br/>
+For more information, see <a href="http://g.co/androidstudio/suppressing-lint-warnings">http://g.co/androidstudio/suppressing-lint-warnings</a><br/>
+
+
+</body>
+</html>

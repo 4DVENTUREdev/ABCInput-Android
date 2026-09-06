@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="candidate_background">#bbffffff</color>
+    <color name="candidate_normal">#FF000000</color>
+    <color name="candidate_other">#ff808080</color>
+    <color name="candidate_recommended">#FFE35900</color>
+    <color name="candidate_selected">#BB0000FF</color>
+    <color name="he_listview_background">#CC00A5C6</color>
+    <color name="header_background">#EE616161</color>
+    <color name="header_color">#FFFFFF00</color>
+    <dimen name="candidate_fontSize">14sp</dimen>
+    <dimen name="candidate_fontSize_small">12sp</dimen>
+    <dimen name="candidate_vertical_padding">0sp</dimen>
+    <item format="float" name="candidate_view_margin_rate" type="dimen">0.1</item>
+    <item format="float" name="candidate_view_width_rate" type="dimen">0.8</item>
+    <dimen name="header_height">22dp</dimen>
+    <dimen name="listView_height">67dp</dimen>
+    <dimen name="pinyin_prompt_right_margin">54dp</dimen>
+    <dimen name="setting_page_editView_height">120dp</dimen>
+    <integer name="page_max_candidate">3</integer>
+    <string name="active_heinput_label">1. Enable HeInput keyboard on your device.</string>
+    <string name="app_name">HeInputLibrary</string>
+    <string name="heInput_activated">1. HeInput already activated!</string>
+    <string name="heInput_is_default">2. HeInput is system default keyboard!</string>
+    <string name="heInput_setup">HeInput Setup</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="instruction_1_step">One step left to complete HeInput setting.</string>
+    <string name="instruction_2_steps">Two step left to complete HeInput setting.</string>
+    <string name="instruction_3_steps">Please follow the three steps below to complete HeInput settings:</string>
+    <string name="instruction_setting_done">HeInput setting is completed, enjoy typing!</string>
+    <string name="label_subtype_generic">%s</string>
+    <string name="label_subtype_heEnglish">English(HeMa)</string>
+    <string name="label_subtype_hePinYin">PinYin(HeMa)</string>
+    <string name="label_subtype_zh_CN">Chinese Simplified(HeMa)%s</string>
+    <string name="label_subtype_zh_TW">Chinese Traditional(HeMa)%s</string>
+    <string name="language_selection_title">Chinese</string>
+    <string name="select_chinese_dialect">3. Select Simplified or Traditional Chinese word collection. </string>
+    <string name="select_chinese_dialect_title">Select default Chinese word collection. </string>
+    <string name="select_default_label">2. Set HeInput keyboard as the default keyboard on your device</string>
+    <string name="select_language">Chinese</string>
+</resources>

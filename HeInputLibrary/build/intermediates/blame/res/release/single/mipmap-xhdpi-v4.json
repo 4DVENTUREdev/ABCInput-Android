@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\arrow_left.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\mipmap-xhdpi-v4\\arrow_left.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\arrow_right.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\mipmap-xhdpi-v4\\arrow_right.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\heinput.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\src\\main\\res\\mipmap-xhdpi\\heinput.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\navigation_back.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\mipmap-xhdpi-v4\\navigation_back.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\action_search.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\mipmap-xhdpi-v4\\action_search.png"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\res\\merged\\release\\mipmap-xhdpi-v4\\navigation_forward.png",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\mipmap-xhdpi-v4\\navigation_forward.png"
+    }
+]

@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\symbols.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\symbols.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\symbols_shift.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\symbols_shift.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\english_keyboard_6x6.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\english_keyboard_6x6.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\keyboard_6x7.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeInputLibrary\\unspecified\\res\\xml\\keyboard_6x7.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\keyboard_6x6_horizontal.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\keyboard_6x6_horizontal.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\he_english_keyboard_6x6.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\he_english_keyboard_6x6.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\qwerty.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeLibrary\\unspecified\\res\\xml\\qwerty.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\ime_preferences.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeInputLibrary\\unspecified\\res\\xml\\ime_preferences.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\method.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeInputLibrary\\unspecified\\res\\xml\\method.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\res\\merged\\release\\xml\\keyboard_4x6.xml",
+        "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\exploded-aar\\HeChinese\\HeInputLibrary\\unspecified\\res\\xml\\keyboard_4x6.xml"
+    }
+]
