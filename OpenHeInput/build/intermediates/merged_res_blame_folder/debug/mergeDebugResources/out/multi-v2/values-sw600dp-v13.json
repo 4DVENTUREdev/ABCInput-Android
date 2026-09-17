@@ -1,0 +1,79 @@
+{
+    "logs": [
+        {
+            "outputFile": "net.HeZi.Android.OpenHeInput-mergeDebugResources-6:/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeLibrary\\build\\intermediates\\packaged_res\\debug\\packageDebugResources\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,113,169,215,262,308,358,405,453,502,549,599,646,694,737,781,826,870,915,961,1006",
+                        "endColumns": "57,55,45,46,45,49,46,47,48,46,49,46,47,42,43,44,43,44,45,44,47",
+                        "endOffsets": "108,164,210,257,303,353,400,448,497,544,594,641,689,732,776,821,865,910,956,1001,1049"
+                    },
+                    "to": {
+                        "startLines": "9,10,21,22,23,24,25,26,27,29,30,31,32,33,35,36,37,38,39,40,41",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "542,600,1318,1364,1411,1457,1507,1554,1602,1696,1743,1793,1840,1888,1979,2023,2068,2112,2157,2203,2248",
+                        "endColumns": "57,55,45,46,45,49,46,47,48,46,49,46,47,42,43,44,43,44,45,44,47",
+                        "endOffsets": "595,651,1359,1406,1452,1502,1549,1597,1646,1738,1788,1835,1883,1926,2018,2063,2107,2152,2198,2243,2291"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Jason Chen\\.gradle\\caches\\9.6.0\\transforms\\ea4d8d0deb1d5fbced9fd9903738bcc5\\transformed\\design-23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,13,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "227,297,368,440,498,556,662,898,1133",
+                        "endLines": "4,5,6,7,8,9,10,13,19",
+                        "endColumns": "69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "292,363,435,493,551,657,721,956,1310"
+                    },
+                    "to": {
+                        "startLines": "14,15,16,17,18,19,20,45,47",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "819,889,960,1032,1090,1148,1254,2471,2585",
+                        "endLines": "14,15,16,17,18,19,20,45,50",
+                        "endColumns": "69,70,71,57,57,105,63,62,12",
+                        "endOffsets": "884,955,1027,1085,1143,1249,1313,2529,2762"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\HeInputLibrary\\build\\intermediates\\packaged_res\\debug\\packageDebugResources\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,105,161,218,263,311,370,431",
+                        "endColumns": "49,55,56,44,47,58,60,50",
+                        "endOffsets": "100,156,213,258,306,365,426,477"
+                    },
+                    "to": {
+                        "startLines": "11,12,13,28,34,42,43,46",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "656,706,762,1651,1931,2296,2355,2534",
+                        "endColumns": "49,55,56,44,47,58,60,50",
+                        "endOffsets": "701,757,814,1691,1974,2350,2411,2580"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Jason Chen\\.gradle\\caches\\9.6.0\\transforms\\c76754688665127b49ca27dafa298b4e\\transformed\\appcompat-v7-23.1.1\\res\\values-sw600dp\\values-sw600dp.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,10,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "233,302,372,446,700,937,1008,1076",
+                        "endColumns": "68,69,73,75,58,70,67,54",
+                        "endOffsets": "297,367,441,517,754,1003,1071,1126"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,44",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,124,194,268,344,403,474,2416",
+                        "endColumns": "68,69,73,75,58,70,67,54",
+                        "endOffsets": "119,189,263,339,398,469,537,2466"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        layout="@layout/candidate_view_layout"
+        android:id="@+id/candidatesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <net.HeZi.Android.HeLibrary.HeInput.HeKeyboardView
+        android:id="@+id/keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:rotation="0"
+        android:rotationX="0"
+        android:rotationY="0"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+</LinearLayout>

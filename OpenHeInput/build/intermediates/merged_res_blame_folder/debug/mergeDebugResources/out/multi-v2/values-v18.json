@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "net.HeZi.Android.OpenHeInput-mergeDebugResources-6:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Jason Chen\\.gradle\\caches\\9.6.0\\transforms\\c76754688665127b49ca27dafa298b4e\\transformed\\appcompat-v7-23.1.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "229",
+                        "endColumns": "48",
+                        "endOffsets": "273"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

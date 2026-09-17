@@ -248,6 +248,7 @@ public class HeInput_DataServer
 			itemIndex = 0;
 			pageIndex = 0;
 			numOfCand = engineCollection.resultZiCiObjArray.size();
+			Log.d("HeIME", "numOfCand=" + numOfCand);
 			getNumOfItemsOfCurrentPage();
 			getOnePageList();
 			typeSessionState = typingState.typeSessionState;

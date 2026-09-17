@@ -1,0 +1,4 @@
+#Thu Sep 17 03:32:41 BST 2026
+base.0=C\:\\Users\\Jason Chen\\StudioProjects\\OpenHeInput-Android\\HeChinese\\OpenHeInput\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

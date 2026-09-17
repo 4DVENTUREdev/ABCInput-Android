@@ -56,7 +56,7 @@ import java.util.UUID;
  */
 public class HeInputService extends InputMethodService
 implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateItemInteractionListener
-{    	
+{
 	static final boolean DEBUG = false;
     private HeInput_DataServer dataServer;
 
@@ -65,7 +65,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 		// TODO Auto-generated method stub
     	//engineDBHelper.close();
     	dataServer.clearState();
-    	setCandidatesViewShown(false);
+        if (mCandidatesContainer != null) mCandidatesContainer.setVisibility(View.GONE);
     	mInputView.closing();
     	super.onDestroy();
 	}
@@ -74,7 +74,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      * This boolean indicates the optional example code for performing
      * processing of hard keys in addition to regular text generation
      * from on-screen interaction.  It would be used for input methods that
-     * perform language translations (such as converting text entered on 
+     * perform language translations (such as converting text entered on
      * a QWERTY keyboard to Chinese), but may not be used for input methods
      * that are primarily intended to be used for on-screen text entry.
      */
@@ -86,7 +86,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     private TextView pinYinPromptView;
     private TextView pageIndicatorView;
     private CompletionInfo[] mCompletions;
-    
+
     //private StringBuilder mComposing = new StringBuilder();
     private boolean mPredictionOn;
     private boolean mCompletionOn;
@@ -107,13 +107,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     private HeKeyboard mSymbolsKeyboard;
     private HeKeyboard mSymbolsShiftedKeyboard;
     private HeKeyboard mQwertyKeyboard;
-    
-    private HeKeyboard mCurKeyboard;  
+
+    private HeKeyboard mCurKeyboard;
     private HeKeyboard mPreKeyboard;
     private String mWordSeparators;
-    
+
     private SharedPreferences sharedPreferences;
-    
+    private View mCandidatesContainer;
     /**
      * Main initialization of the input method component.  Be sure to call
      * to super class.
@@ -126,12 +126,12 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         //Log.d("","OnCreate.....1");
         mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         mWordSeparators = getResources().getString(R.string.word_separators);
-        
+
         openOrCreateSharedPreferencesFile();
 
         dataServer = new HeInput_DataServer(this, getSettingFromSharedPreference());
-        
-        dataServer.setOnDataServerListener(dataServerListener);  
+
+        dataServer.setOnDataServerListener(dataServerListener);
         dataServer.setMaxItemsOfPage(getResources().getInteger(R.integer.page_max_candidate));
     }
 
@@ -142,7 +142,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     //Step 2
     //The IME Lifecycle
     //http://developer.android.com/guide/topics/text/creating-input-method.html
-    @Override public void onInitializeInterface() 
+    @Override public void onInitializeInterface()
     {
         Log.d("", "onInitializeInterface.....2");
 
@@ -177,14 +177,21 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     //The IME Lifecycle
     //http://developer.android.com/guide/topics/text/creating-input-method.html
     @Override public View onCreateInputView() {
-        //Log.d("","onCreateInputView.....4");
+        View root = getLayoutInflater().inflate(R.layout.input_view_combined, null);
+        mInputView = root.findViewById(R.id.keyboard);
+        mCandidatesContainer = root.findViewById(R.id.candidatesContainer);
+        mCandidateListView = mCandidatesContainer.findViewById(R.id.customListView);
+        typedMaView = mCandidatesContainer.findViewById(R.id.typedMa);
+        pinYinPromptView = mCandidatesContainer.findViewById(R.id.pinYinPrompt);
+        pageIndicatorView = mCandidatesContainer.findViewById(R.id.pageIndicator);
+        mCandidateListView.setService(this);
 
-        mInputView = (HeKeyboardView) getLayoutInflater().inflate(R.layout.keyboard_view, null);
         mInputView.setOnKeyboardActionListener(this);
         setHeKeyboard(heKeyboard_4x6);
-        return mInputView;
+        mCandidatesContainer.setVisibility(View.GONE);
+        return root;
     }
-
+    @Override public boolean onShowInputRequested(int flags, boolean configChange) { return true; }
     // CandidateListView Interface
     // When user typed candidate item, implement the input
     @Override
@@ -200,7 +207,10 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             updateCandidates();
         }
     }
-
+    @Override
+    public boolean onEvaluateInputViewShown() {
+        return true;
+    }
     private void setHeKeyboard(HeKeyboard nextKeyboard) {
         /*
         final boolean shouldSupportLanguageSwitchKey =
@@ -209,7 +219,8 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         //*/
 
         mInputView.setKeyboard(nextKeyboard);
-        //mInputView.setBackgroundColor(Color.CYAN);
+        Log.d("HeKbDebug", "height=" + nextKeyboard.getHeight()
+                + " keys=" + nextKeyboard.getKeys().size());
         //mInputView.setBackground(getResources().getDrawable(R.drawable.he_keyboard_background));
     }
 
@@ -217,24 +228,6 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      * Called by the framework when your view for showing candidates needs to
      * be generated, like {@link #onCreateInputView}.
      */
-    //Step 5
-    @Override public View onCreateCandidatesView() {
-
-        //Log.d("","onCreateCandidatesView.....5");
-        LinearLayout mainLayout =
-                (LinearLayout) getLayoutInflater().inflate(R.layout.candidate_view_layout, null);
-
-        mCandidateListView = (CandidateListView) mainLayout.findViewById(R.id.customListView);
-
-        typedMaView = (TextView) mainLayout.findViewById(R.id.typedMa);
-        pinYinPromptView = (TextView)mainLayout.findViewById(R.id.pinYinPrompt);
-        pageIndicatorView = (TextView)mainLayout.findViewById(R.id.pageIndicator);
-
-        mCandidateListView.setService(this);
-        setCandidatesViewShown(false);
-        return mainLayout;
-    }
-
     /**
      * This is the main point where we do our initialization of the input method
      * to begin operating on an application.  At this point we have been
@@ -242,30 +235,30 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      * about the target of our edits.
      */
     //Step 3
-    @Override 
-    public void onStartInput(EditorInfo attribute, boolean restarting) 
+    @Override
+    public void onStartInput(EditorInfo attribute, boolean restarting)
     {
         super.onStartInput(attribute, restarting);
-        
+
         //Log.d("","onStartInput.....3");
 
         // Reset our state.  We want to do this even if restarting, because
         // the underlying state of the text editor could have changed in any way.
         //mComposing.setLength(0);
-        
+
         if (!restarting) {
             // Clear shift states.
             mMetaState = 0;
             dataServer.clearState();
         }
-        
+
         mPredictionOn = false;
         mCompletionOn = false;
         mCompletions = null;
-        
+
         // We are now going to initialize our state based on the type of
         // text being edited.
-        switch (attribute.inputType & InputType.TYPE_MASK_CLASS) 
+        switch (attribute.inputType & InputType.TYPE_MASK_CLASS)
         {
             case InputType.TYPE_CLASS_NUMBER:
             case InputType.TYPE_CLASS_DATETIME:
@@ -274,13 +267,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             	//mPreKeyboard = mCurKeyboard;
                 mCurKeyboard = mSymbolsKeyboard;
                 break;
-                
+
             case InputType.TYPE_CLASS_PHONE:
                 // Phones will also default to the symbols keyboard, though
                 // often you will want to have a dedicated phone keyboard.
                 mCurKeyboard = mSymbolsKeyboard;
                 break;
-                
+
             case InputType.TYPE_CLASS_TEXT:
                 // This is general text editing.  We will default to the
                 // normal alphabetic keyboard, and assume that we should
@@ -322,7 +315,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     				default:
     					break;
     			}
-                
+
                 // We now look for a few special variations of text that will
                 // modify our behavior.
                 int variation = attribute.inputType & InputType.TYPE_MASK_VARIATION;
@@ -333,7 +326,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     mPredictionOn = false;
                     mCurKeyboard = mQwertyKeyboard;//englishKeyboard_6x6;
                 }
-                
+
                 if (variation == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                         || variation == InputType.TYPE_TEXT_VARIATION_URI
                         || variation == InputType.TYPE_TEXT_VARIATION_FILTER) {
@@ -342,7 +335,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     mPredictionOn = false;
                     mCurKeyboard = mQwertyKeyboard;//englishKeyboard_6x6;
                 }
-                
+
                 if ((attribute.inputType & InputType.TYPE_TEXT_FLAG_AUTO_COMPLETE) != 0) {
                     // If this is an auto-complete text view, then our predictions
                     // will not be shown and instead we will allow the editor
@@ -353,20 +346,20 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     mCurKeyboard = mQwertyKeyboard;//englishKeyboard_6x6;
                     mCompletionOn = isFullscreenMode();
                 }
-                
+
                 // We also want to look at the current state of the editor
                 // to decide whether our alphabetic keyboard should start out
                 // shifted.
                 updateShiftKeyState(attribute);
                 break;
-                
+
             default:
                 // For all unknown input types, default to the alphabetic
                 // keyboard with no special features.
                 mCurKeyboard = heKeyboard_4x6;
                 updateShiftKeyState(attribute);
         }
-        
+
         // Update the label on the enter key, depending on what the application
         // says it will do.
         mCurKeyboard.setImeOptions(getResources(), attribute.imeOptions);
@@ -378,17 +371,17 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      */
     @Override public void onFinishInput() {
         super.onFinishInput();
-        
+
         // Clear current composing text and candidates.
         //mComposing.setLength(0);
         dataServer.clearState();
-        
+
         // We only hide the candidates window when finishing input on
         // a particular editor, to avoid popping the underlying application
         // up and down if the user is entering text into the bottom of
         // its window.
-        setCandidatesViewShown(false);
-        
+        if (mCandidatesContainer != null) mCandidatesContainer.setVisibility(View.GONE);
+
         if (mInputView != null) {
             mInputView.closing();
         }
@@ -397,11 +390,16 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     //Step 6
     @Override public void onStartInputView(EditorInfo attribute, boolean restarting)
     {
+        if (mInputView == null) { setInputView(onCreateInputView()); }
         super.onStartInputView(attribute, restarting);
+        mCandidatesContainer.setVisibility(View.VISIBLE);
         // Apply the selected keyboard to the input view.
         //Log.d("","onStartInputView.....6");
 
         setHeKeyboard(mCurKeyboard);
+        Log.d("HeKbDebug", "onStartInputView keyboard=" + mCurKeyboard
+                + " height=" + mCurKeyboard.getHeight()
+                + " keys=" + mCurKeyboard.getKeys().size());
         mInputView.closing();
         final InputMethodSubtype subtype = mInputMethodManager.getCurrentInputMethodSubtype();
         mInputView.setSubtypeOnSpaceKey(subtype);
@@ -418,7 +416,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     }
 
     @Override
-    public void onCurrentInputMethodSubtypeChanged(InputMethodSubtype subtype) 
+    public void onCurrentInputMethodSubtypeChanged(InputMethodSubtype subtype)
     {
         mInputView.setSubtypeOnSpaceKey(subtype);
     }
@@ -431,11 +429,11 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             int candidatesStart, int candidatesEnd) {
         super.onUpdateSelection(oldSelStart, oldSelEnd, newSelStart, newSelEnd,
                 candidatesStart, candidatesEnd);
-        
+
         // If the current selection in the text view changes, we should
         // clear whatever candidate text we have.
         if (/*mComposing.length() > 0 && */(newSelStart != candidatesEnd
-                || newSelEnd != candidatesEnd)) 
+                || newSelEnd != candidatesEnd))
         {
             //mComposing.setLength(0);
             updateCandidates();
@@ -459,7 +457,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 //setSuggestions(null, false, false);
                 return;
             }
-            
+
             List<String> stringList = new ArrayList<String>();
             for (int i = 0; i < completions.length; i++) {
                 CompletionInfo ci = completions[i];
@@ -468,7 +466,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             //setSuggestions(stringList, true, true);
         }
     }
-    
+
     /**
      * This translates incoming hard key events in to edit operations on an
      * InputConnection.  It is only needed when using the
@@ -483,7 +481,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         if (c == 0 || ic == null) {
             return false;
         }
-        
+
         boolean dead = false;
 
         if ((c & KeyCharacterMap.COMBINING_ACCENT) != 0) {
@@ -491,7 +489,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             c = c & KeyCharacterMap.COMBINING_ACCENT_MASK;
         }
         /*
-        if (mComposing.length() > 0) 
+        if (mComposing.length() > 0)
         {
             char accent = mComposing.charAt(mComposing.length() -1 );
             int composed = KeyEvent.getDeadChar(accent, c);
@@ -503,17 +501,17 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         }
         //*/
         onKey(c, null);
-        
+
         return true;
     }
-    
+
     /**
      * Use this to monitor key events being delivered to the application.
      * We get first crack at them, and can either resume them or let them
      * continue to the app.
      */
-   
-    @Override public boolean onKeyDown(int keyCode, KeyEvent event) 
+
+    @Override public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
@@ -527,20 +525,20 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     }
                 }
                 break;
-                
+
             case KeyEvent.KEYCODE_DEL:
                 // Special handling of the delete key: if we currently are
                 // composing text for the user, we want to modify that instead
                 // of let the application to the delete itself.
                 /*
-            	if (mComposing.length() > 0) 
+            	if (mComposing.length() > 0)
                 {
                     onKey(Keyboard.KEYCODE_DELETE, null);
                     return true;
                 }
                 //*/
                 break;
-                
+
             case KeyEvent.KEYCODE_ENTER:
                 // Let the underlying text editor always handle these.
                 return false;
@@ -549,10 +547,10 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 // For all other keys, if we want to do transformations on
                 // text being entered with a hard keyboard, we need to process
                 // it and do the appropriate action.
-                if (PROCESS_HARD_KEYS) 
+                if (PROCESS_HARD_KEYS)
                 {
                     if (keyCode == KeyEvent.KEYCODE_SPACE
-                            && (event.getMetaState()&KeyEvent.META_ALT_ON) != 0) 
+                            && (event.getMetaState()&KeyEvent.META_ALT_ON) != 0)
                     {
                         // A silly example: in our input method, Alt+Space
                         // is a shortcut for 'android' in lower case.
@@ -605,7 +603,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     {
     	//Log.d("CommitTyped function->", "SelectedItemIndex: "+typingState.selectedIndex);
     	String ziCiStr = dataServer.getSelectedZiCiStr();
-    	
+
     	if(ziCiStr.length() > 0)
     	{
        		heCommitText(ziCiStr,true,true);
@@ -619,7 +617,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      * editor state.
      */
     private void updateShiftKeyState(EditorInfo attr) {
-        if (attr != null 
+        if (attr != null
                 && mInputView != null && mQwertyKeyboard /*englishKeyboard_6x6*/ == mInputView.getKeyboard()) {
             int caps = 0;
             EditorInfo ei = getCurrentInputEditorInfo();
@@ -629,7 +627,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             mInputView.setShifted(mCapsLock || caps != 0);
         }
     }
-    
+
     /**
      * Helper to determine if a given character code is alphabetic.
      */
@@ -640,7 +638,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             return false;
         }
     }
-    
+
     /**
      * Helper to send a key down / key up pair to the current editor.
      */
@@ -650,7 +648,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         getCurrentInputConnection().sendKeyEvent(
                 new KeyEvent(KeyEvent.ACTION_UP, keyEventCode));
     }
-    
+
     /**
      * Helper to send a character to the editor as raw key events.
      */
@@ -759,7 +757,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         InputConnection ic = getCurrentInputConnection();
         if (ic == null) return;
         ic.beginBatchEdit();
-        
+
         /*
         if (mComposing.length() > 0) {
             commitTyped(ic);
@@ -775,7 +773,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      * text.  This will need to be filled in by however you are determining
      * candidates.
      */
-    private void updateCandidates() 
+    private void updateCandidates()
     {
     	if(mCandidateListView != null)
     	{
@@ -783,24 +781,20 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     		updatePinYinPrompt();
     		updatePageIndicator();
             mCandidateListView.printListViewPage(dataServer.onePageRows, dataServer.getItemIndex());
-    		if(dataServer.numOfCand>0)
-              {
-    			setCandidatesViewShown(true);
-              }
+            if(dataServer.numOfCand>0)
+            {
+                mCandidatesContainer.setVisibility(View.VISIBLE);
+            }
     	}
     }
-    
+
     public void setSuggestions(List<String> suggestions, boolean completions,
-            boolean typedWordValid) 
+                               boolean typedWordValid)
     {
-    	mCandidateListView.printListViewPage(dataServer.onePageRows, dataServer.getItemIndex());
-        setCandidatesViewShown(true);
-        
-        if (isExtractViewShown()) {
-            setCandidatesViewShown(true);
-        }
+        mCandidateListView.printListViewPage(dataServer.onePageRows, dataServer.getItemIndex());
+        mCandidatesContainer.setVisibility(View.VISIBLE);
     }
-    
+
     private void handleBackspace() {
     	//When numOfCand>0 it could be empty list for keep the listview exist.
     	if(dataServer.onePageRows.size()>0)
@@ -819,12 +813,12 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         updateShiftKeyState(getCurrentInputEditorInfo());
     }
 
-    private void handleShift() 
+    private void handleShift()
     {
         if (mInputView == null) {
             return;
         }
-        
+
         Keyboard currentKeyboard = mInputView.getKeyboard();
         if (mQwertyKeyboard /*englishKeyboard_6x6*/ == currentKeyboard) {
             // Alphabet keyboard
@@ -848,7 +842,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     }
 
     private void handleCharAndNumber(int shuMa, int[] keyCodes) {
-    	
+
     	if(dataServer.isMenuShow())
     	{
     		if(dataServer.typingCharAndNumber(shuMa))
@@ -907,7 +901,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     public void pickDefaultCandidate() {
         pickSuggestionManually(0);
     }
-    
+
     public void pickSuggestionManually(int index) {
         if (mCompletionOn && mCompletions != null && index >= 0
                 && index < mCompletions.length) {
@@ -918,7 +912,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 //mCandidateView.clear();
             //}
             updateShiftKeyState(getCurrentInputEditorInfo());
-        } 
+        }
         /*
         else if (mComposing.length() > 0) {
             // If we were generating candidate suggestions for the current
@@ -928,13 +922,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         }
         //*/
     }
-    
+
     public void swipeRight() {
         if (mCompletionOn) {
             pickDefaultCandidate();
         }
     }
-    
+
     public void swipeLeft() {
         handleBackspace();
     }
@@ -945,13 +939,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 
     public void swipeUp() {
     }
-    
+
     public void onPress(int primaryCode) {
     }
-    
+
     public void onRelease(int primaryCode) {
     }
-    
+
     //Handle Control key
     private void handleControlKey(int primaryCode)
     {
@@ -964,12 +958,12 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     			if(dataServer.isMenuShow())
     			{
     				dataServer.clearState();
-    				setCandidatesViewShown(false);
+                    mCandidatesContainer.setVisibility(View.GONE);
     			}
     			else if(dataServer.typingCharAndNumber(-2))
                 {
                 		updateCandidates();
-                }   
+                }
     			break;
     		case -3:	//Cancel Key, Keyboard.KEYCODE_ESCAPE,
     			if(dataServer.numOfCand>0)
@@ -977,12 +971,12 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         			dataServer.clearState();
         			if(mCandidateListView != null)
         			{
-        				setCandidatesViewShown(false);
+                        mCandidatesContainer.setVisibility(View.GONE);
         			}
         		}
         		else
         		{
-        			setCandidatesViewShown(false);
+                    mCandidatesContainer.setVisibility(View.GONE);
         			handleClose();
                     //let application to handle keyboad show/hide
                     //It is used in CustomTextView of HeBook application.
@@ -1007,7 +1001,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 }
                 setHeKeyboard(mCurKeyboard);
                 dataServer.clearState();
-                setCandidatesViewShown(false);
+                mCandidatesContainer.setVisibility(View.GONE);
             }
             break;
             case -12:	//Number keyboard and back to previous keyboard
@@ -1031,7 +1025,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 }
                 setHeKeyboard(mCurKeyboard);
                 dataServer.clearState();
-                setCandidatesViewShown(false);
+                mCandidatesContainer.setVisibility(View.GONE);
             }
             break;
             case -13:	//PinYin key
@@ -1043,7 +1037,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     mPredictionOn = true;
                 }
                 setHeKeyboard(mCurKeyboard);
-                setCandidatesViewShown(false);
+                mCandidatesContainer.setVisibility(View.GONE);
                 dataServer.clearState();
             }
             break;
@@ -1147,7 +1141,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     			break;
     	}
     }
-    
+
     private void updateTypedMa()
     {
     	if(typedMaView != null)
@@ -1178,13 +1172,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 		* "net.HeZi.Android.SharedPreferenceFile" is shared by user session and all HeChinese apps will share it,
 		* each user space will have one of this file created.
 		* "***This data will persist across user sessions (even if your application is killed)***"
-		* That means only when user is deleted from device, 
+		* That means only when user is deleted from device,
 		* then net.HeZi.Android.SharedPreferenceFile will be removed
 		* "HC_USER_ID" is the ID to identifier this file, and will saved in HeZi.net web server.
 		* HC_USER_ID is unique for each user, since each device can have more users.
 		* HC_USER_ID is not changeable.
-		*/ 
-    	
+		*/
+
        	//Can't use getPreferences(); since it is service application
     	sharedPreferences = getSharedPreferences("net.HeZi.Android.SharedPreferenceFile",MODE_PRIVATE);
 
@@ -1195,7 +1189,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
  		if (uniqueUserID == null) {
             uniqueUserID = UUID.randomUUID().toString();
             editor.putString("HC_USER_ID", uniqueUserID);
-            String android_ID = Secure.getString(getContentResolver(), Secure.ANDROID_ID); 
+            String android_ID = Secure.getString(getContentResolver(), Secure.ANDROID_ID);
     		editor.putString("Device_UDID", android_ID);
             //editor.commit();
         }
@@ -1207,20 +1201,20 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 			editor.putBoolean("HeInput_Normal_ZiKu", true);
 			editor.putBoolean("HeInput_PinYin_Prompt", true);
 			editor.putBoolean("HeInput_LianXiang", false);
-			
+
 			editor.putBoolean("HeInput_HeMaModeNumpad", true);
 			editor.putBoolean("HeInput_PinYinModeNumpad", true);
 			editor.putBoolean("HeInput_HeEnglishModeNumpad", true);
-			
+
 			//editor.commit();
 		}
 		editor.commit();
 	}
-    
+
     private Setting getSettingFromSharedPreference()
     {
     	Setting setting = new Setting();
-    	
+
         if (sharedPreferences.getBoolean("HeInput_Simplified_Chinese", true)) {
             setting.systemKeyMode = Setting.InputMode.HeMa_Simplified_Mode;
         }
@@ -1232,16 +1226,16 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 
     	setting.bNormalZiKu = sharedPreferences.getBoolean("HeInput_Normal_ZiKu", true);
     	setting.bPinYinPrompt = sharedPreferences.getBoolean("HeInput_PinYin_Prompt", true);
-    	setting.bLianXiang = sharedPreferences.getBoolean("HeInput_LianXiang", false);		
-    	
-    	setting.bHeMaModeNumpad = sharedPreferences.getBoolean("HeInput_HeMaModeNumpad", true);		
-    	setting.bPinYinModeNumpad = sharedPreferences.getBoolean("HeInput_PinYinModeNumpad", true);		
-    	setting.bHeEnglishModeNumpad = sharedPreferences.getBoolean("HeInput_HeEnglishModeNumpad", true);		
+    	setting.bLianXiang = sharedPreferences.getBoolean("HeInput_LianXiang", false);
+
+    	setting.bHeMaModeNumpad = sharedPreferences.getBoolean("HeInput_HeMaModeNumpad", true);
+    	setting.bPinYinModeNumpad = sharedPreferences.getBoolean("HeInput_PinYinModeNumpad", true);
+    	setting.bHeEnglishModeNumpad = sharedPreferences.getBoolean("HeInput_HeEnglishModeNumpad", true);
 
     	return setting;
     }
-    
-    protected OnDataServerListener dataServerListener = new OnDataServerListener() 
+
+    protected OnDataServerListener dataServerListener = new OnDataServerListener()
     {
 		@Override
 		public void keyboardChange(Setting.InputMode inputMode)
@@ -1267,7 +1261,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 					    	dataServer.clearState();
 							mCurKeyboard = heKeyboard_6x7;
 							setHeKeyboard(mCurKeyboard);
-						}						
+						}
 					}
 					break;
 				case PinYinMode:
@@ -1288,7 +1282,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 					    	dataServer.clearState();
 							mCurKeyboard = mQwertyKeyboard /*englishKeyboard_6x6*/;
 							setHeKeyboard(mCurKeyboard);
-						}						
+						}
 					}
 					break;
 				case HeEnglishMode:
@@ -1309,7 +1303,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 					    	dataServer.clearState();
 							mCurKeyboard = mQwertyKeyboard /*englishKeyboard_6x6*/;
 							setHeKeyboard(mCurKeyboard);
-						}						
+						}
 					}
 					break;
 				case NumberMode:
@@ -1333,15 +1327,15 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 				default:
 					break;
 			}
-	    	setCandidatesViewShown(false);
-			//Log.d("Trace..","menu 52 selected.....2....... ");			
+            mCandidatesContainer.setVisibility(View.GONE);
+			//Log.d("Trace..","menu 52 selected.....2....... ");
 		}
 
 		@Override
-		public void saveSharedPreferences() 
+		public void saveSharedPreferences()
 		{
 			SharedPreferences.Editor editor = sharedPreferences.edit();
-						
+
             if (dataServer.setting.currentKeyMode == Setting.InputMode.HeMa_Simplified_Mode) {
                 editor.putBoolean("HeInput_Simplified_Chinese", true);
             }
@@ -1349,7 +1343,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 			editor.putBoolean("HeInput_Normal_ZiKu", dataServer.setting.bNormalZiKu);
 			editor.putBoolean("HeInput_PinYin_Prompt", dataServer.setting.bPinYinPrompt);
 			editor.putBoolean("HeInput_LianXiang", dataServer.setting.bLianXiang);
-			
+
 			editor.putBoolean("HeInput_HeMaModeNumpad", dataServer.setting.bHeMaModeNumpad);
 			editor.putBoolean("HeInput_PinYinModeNumpad", dataServer.setting.bPinYinModeNumpad);
 			editor.putBoolean("HeInput_HeEnglishModeNumpad", dataServer.setting.bHeEnglishModeNumpad);
@@ -1358,15 +1352,15 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 		}
 
 		@Override
-		public void commitString(String typedString) 
+		public void commitString(String typedString)
 		{
 			if(typedString.length() > 0)
 	    	{
 				//getCurrentInputConnection().commitText(typedString, 1);
                 heCommitText(typedString,true,true);
 	    		dataServer.clearState();
-	    		//setCandidatesViewShown(false);
-	    	}    	
+	    		//mCandidatesContainer.setVisibility(View.GONE);
+	    	}
 		}
 
 		@Override
