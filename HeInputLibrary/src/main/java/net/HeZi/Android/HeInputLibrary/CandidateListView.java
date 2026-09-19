@@ -23,91 +23,97 @@ import net.HeZi.Android.HeInputLibrary.HeInputService;
 import net.HeZi.Android.HeInputLibrary.R;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.net.Uri;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 public class CandidateListView extends ListView
-implements OnItemClickListener
+		implements OnItemClickListener
 {
-    private HeInputService mService;
+	private HeInputService mService;
 
-    private Context cxt;
+	private Context cxt;
 
-    protected CandidateItemInteractionListener itemListener;
+	protected CandidateItemInteractionListener itemListener;
 
-    public interface CandidateItemInteractionListener {
+	private GestureDetector mGestureDetector;
+	private static final int SWIPE_MIN_DISTANCE = 80;
+	private static final int SWIPE_MAX_OFF_PATH = 200;
+	private static final int SWIPE_THRESHOLD_VELOCITY = 100;
 
-        public void onItemInteraction(int itemIndexOnThePage);
-    }
+	public interface CandidateItemInteractionListener {
 
-    public CandidateListView(Context context, AttributeSet attrs) {
+		public void onItemInteraction(int itemIndexOnThePage);
+	}
+
+	public CandidateListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		cxt = context;
 		this.setClickable(false);
 		setOnItemClickListener(this);
+
+		mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+			@Override
+			public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+				if (e1 == null || e2 == null || mService == null) return false;
+				float diffY = e2.getY() - e1.getY();
+				float diffX = e2.getX() - e1.getX();
+				if (Math.abs(diffY) > SWIPE_MAX_OFF_PATH) return false;
+				if (Math.abs(diffX) < SWIPE_MIN_DISTANCE) return false;
+				if (Math.abs(velocityX) < SWIPE_THRESHOLD_VELOCITY) return false;
+
+				if (diffX > 0) {
+					mService.pageSwiped(-1); // swipe right -> previous page
+				} else {
+					mService.pageSwiped(1);  // swipe left -> next page
+				}
+				return true;
+			}
+		});
 	}
 
-	/*
-	public HeListView(Context context) {
-		super(context);
-		cxt = context;
-		itemIndex = 0;
-		totalNumber = 0;
-		setOnItemClickListener(this);
-	}
-	//*/
-
-    public void printListViewPage(List<HashMap<String, String>> onePageList, int itemIndex)
+	public void printListViewPage(List<HashMap<String, String>> onePageList, int itemIndex)
 	{
-		String[] columns = new String[] {"ZiCi","PromptMa"};
-	    // the XML defined views which the data will be bound to
-	    int[] to = new int[] { R.id.ziCiText, R.id.shuMaPrompt };
-	 
-	    //onePageRows = getOnePageList();
+		String[] columns = new String[] {"ZiCi","English"};
+		int[] to = new int[] { R.id.ziCiText, R.id.shuMaPrompt };
 
-	    SimpleAdapter adapter = new SimpleAdapter(cxt, onePageList, R.layout.item, columns, to);
-	    
-	 	this.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+		SimpleAdapter adapter = new SimpleAdapter(cxt, onePageList, R.layout.item, columns, to);
+
+		this.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		this.setAdapter(adapter);
 		this.setItemChecked(itemIndex, true);
 	}
-	
-	protected void onDraw(Canvas canvas) {
-		   super.onDraw(canvas);
-		   
-           //canvas.translate(200, -50);            
-           
-	}
-	
-    /**
-     * A connection back to the service to communicate with the text field
-     * @param listener
-     */
-    public void setService(HeInputService listener) {
 
-        mService = listener;
-        itemListener = listener;
-    }
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		if (mGestureDetector.onTouchEvent(event)) {
+			return true;
+		}
+		return super.onTouchEvent(event);
+	}
+
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+	}
+
+	public void setService(HeInputService listener) {
+		mService = listener;
+		itemListener = listener;
+	}
 
 	@Override
 	public void setSelection(int position) {
-		// TODO Auto-generated method stub
 		super.setSelection(position);
 	}
-	//*
 
 	@Override
-	public void onItemClick(AdapterView<?> listView, View view, 
-	     int position, long id) {
-
-	    //Toast.makeText(cxt, "Magic", Toast.LENGTH_LONG).show();
-	    itemListener.onItemInteraction(position);
-	   }
+	public void onItemClick(AdapterView<?> listView, View view,
+	                        int position, long id) {
+		itemListener.onItemInteraction(position);
+	}
 }

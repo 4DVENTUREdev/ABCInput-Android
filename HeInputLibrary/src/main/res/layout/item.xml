@@ -4,26 +4,31 @@
     android:gravity="center"
     android:descendantFocusability="blocksDescendants"
     android:background="@layout/menu_item_background_selector"
-     >
- 
+    >
+
     <TextView
         android:id="@+id/ziCiText"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="@dimen/margin_medium"
-        android:textColor="@layout/menu_item_text_selector" 
+        android:textColor="@layout/menu_item_text_selector"
         android:textSize="@dimen/candidate_fontSize" />
 
     <TextView
         android:id="@+id/shuMaPrompt"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true" 
+        android:layout_toRightOf="@id/ziCiText"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/margin_small"
         android:layout_marginRight="@dimen/margin_medium"
-        android:textColor="@layout/menu_item_text_selector" 
-        android:textSize="@dimen/candidate_fontSize" />
-       
+        android:gravity="center_vertical|right"
+        android:textColor="@layout/menu_item_text_selector"
+        android:textSize="@dimen/candidate_fontSize_small"
+        android:singleLine="true"
+        android:ellipsize="end" />
+
 </RelativeLayout>
 
 

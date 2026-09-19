@@ -123,6 +123,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     //http://developer.android.com/guide/topics/text/creating-input-method.html
     @Override public void onCreate() {
         super.onCreate();
+        CedictDictionary.init(getApplicationContext());
         //Log.d("","OnCreate.....1");
         mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         mWordSeparators = getResources().getString(R.string.word_separators);
@@ -205,6 +206,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             heCommitText(ziCiStr, true, true);
             dataServer.clearState();
             updateCandidates();
+        }
+    }
+    public void pageSwiped(int direction) {
+        if (dataServer.changePageIndexBy(direction)) {
+            mCandidateListView.printListViewPage(dataServer.onePageRows, dataServer.getItemIndex());
+            pageIndicatorView.setText(dataServer.getPageIndicatorStr());
+            updatePinYinPrompt();
         }
     }
     @Override

@@ -692,6 +692,7 @@ public class HeInput_DataServer
 			else {
 				map.put("PromptMa", engineCollection.getDanZiCode(danZi.charAt(0)));
 			}
+			map.put("English", CedictDictionary.lookup(danZi));
 			onePageRows.add(map);
 			currIndex++;
 			if(currIndex == numOfCand) {
@@ -718,6 +719,7 @@ public class HeInput_DataServer
 			ziCiObj = engineCollection.resultZiCiObjArray.get(currIndex);
 			map.put("ZiCi", ziCiObj.ziCi);
 			map.put("PromptMa", ""+ziCiObj.promptShuMa);
+			map.put("English", CedictDictionary.lookup(ziCiObj.ziCi));
 			onePageRows.add(map);
 			currIndex++;
 			if(currIndex == numOfCand) {
