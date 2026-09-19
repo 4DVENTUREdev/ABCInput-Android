@@ -34,37 +34,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1081df5d-d6db-4bb6-8140-02dc4a505247" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/assets/cedict.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/CedictDictionary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/assets/jieba_dict.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/InputEngine/WordEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/.transforms/055942941132ad010cc0ab783d30ccc6/transformed/classes/classes_dex/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/.transforms/055942941132ad010cc0ab783d30ccc6/transformed/classes/classes_dex/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/CandidateListView.class" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/CandidateListView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService.class" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/HeInputService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/InputEngine/EngineCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/net/HeZi/Android/HeInputLibrary/InputEngine/EngineCollection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/CandidateListView.java" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/CandidateListView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/HeInputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/HeInputService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/HeInput_DataServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/HeInput_DataServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HeInputLibrary/src/main/res/layout/item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/res/layout/item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/InputEngine/EngineCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/InputEngine/EngineCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HeLibrary/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/HeLibrary/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/d8_metadata/debug/mergeDexDebug/d8-metadata.dat" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/d8_metadata/debug/mergeDexDebug/d8-metadata.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_1/graph.bin" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_1/graph.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/dex/debug/mergeDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/dex/debug/mergeDexDebug/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenHeInput/build/outputs/apk/debug/OpenHeInput-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/outputs/apk/debug/OpenHeInput-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpenHeInput/build/outputs/apk/debug/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/OpenHeInput/build/outputs/apk/debug/output-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +113,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "glosses-working",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Jason Chen/StudioProjects/OpenHeInput-Android/HeChinese/HeInputLibrary/src/main/java/net/HeZi/Android/HeInputLibrary/InputEngine",
     "run.code.analysis.last.selected.profile": "pProject Default"
@@ -122,8 +122,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\HeInputLibrary\src\main\java\net\HeZi\Android\HeInputLibrary\InputEngine" />
+      <recent name="C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\HeInputLibrary\src\main\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\HeInputLibrary\src\main\java\net\HeZi\Android\HeInputLibrary\InputEngine" />
       <recent name="C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\HeInputLibrary\src\main\assets" />
     </key>
   </component>

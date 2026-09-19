@@ -37,6 +37,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import net.HeZi.Android.HeInputLibrary.InputEngine.WordEngine;
 
 import net.HeZi.Android.HeInputLibrary.HeInput_DataServer.OnDataServerListener;
 import net.HeZi.Android.HeLibrary.HeInput.HeKeyboard;
@@ -124,6 +125,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     @Override public void onCreate() {
         super.onCreate();
         CedictDictionary.init(getApplicationContext());
+        WordEngine.init(getApplicationContext());
         //Log.d("","OnCreate.....1");
         mInputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         mWordSeparators = getResources().getString(R.string.word_separators);

@@ -19,7 +19,7 @@ package net.HeZi.Android.HeInputLibrary.InputEngine;
 import net.HeZi.Android.HeLibrary.HeBase.ZiCiObject;
 import net.HeZi.Android.HeLibrary.HeInput.Setting;
 import net.HeZi.Android.HeLibrary.HeInput.TypingState;
-
+import java.util.Locale;
 import android.database.MatrixCursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -91,10 +91,24 @@ public class EngineCollection
 				break;
 				case PinYinMode:
 				{
-					//Log.d("Debug","Location EngineCollection.........");
 					ziCiObjArr = pinYinEngine.generateCandidates(setting, typingState, hemaDatabase);
+
+					if (typingState.engCharArrayLen >= 1) {
+						String typed = new String(typingState.engCharArray, 0, typingState.engCharArrayLen)
+								.toLowerCase(Locale.ROOT);
+
+						ArrayList<String> chars = new ArrayList<String>();
+						for (ZiCiObject z : ziCiObjArr) chars.add(z.ziCi);
+
+						// pass false while a numpad letter is half-entered
+						ArrayList<String> ranked = WordEngine.rank(typed, chars, typingState.engCharShuMa == 0);
+
+						ArrayList<ZiCiObject> merged = new ArrayList<ZiCiObject>(ranked.size());
+						for (String s : ranked) merged.add(new ZiCiObject(s, 0, 0, 0, 0, 0, 0));
+						ziCiObjArr = merged;
+					}
 				}
-					break;
+				break;
 				case HeEnglishMode:
 				{
 					//Log.d("Debug","Location EngineCollection...4 HeEnglishMode:......");
