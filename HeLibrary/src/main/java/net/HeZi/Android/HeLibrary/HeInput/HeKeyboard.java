@@ -150,10 +150,10 @@ public class HeKeyboard extends Keyboard {
             case -12:	//123 and Back Switch to symbol keyboard
             case -13:   //pinyin key
                 //case -15:	//back to previous keyboard;
-            case 38:	//Up arrow Key
-            case 40:	//Down arrow key
-            case 37:	//Left arrow Key
-            case 39:	//right arrow key
+            case -201:	//Up arrow Key
+            case -202:	//Down arrow key
+            case -203:	//Left arrow Key
+            case -204:	//right arrow key
             case 10:	//return Key
             case 32:	//space key  KeyEvent.KEYCODE_SPACE = 62
                 bControlKey = true;

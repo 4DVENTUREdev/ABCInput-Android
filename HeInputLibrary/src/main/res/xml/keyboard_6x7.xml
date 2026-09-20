@@ -58,7 +58,7 @@
         <Key android:codes="105" android:keyLabel="32 土"/>
         <Key android:codes="111" android:keyLabel="42 亻"/>
         <Key android:codes="117" android:keyLabel="52 冫"/>
-        <Key android:codes="37" android:keyLabel='←' android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="-203" android:keyLabel='←' android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     <Row>
         <Key android:codes="40,222" android:keyLabel="(  &quot;" android:keyEdgeFlags="left" />
@@ -67,7 +67,7 @@
         <Key android:codes="110" android:keyLabel="33 卄"/>
         <Key android:codes="115" android:keyLabel="43 人"/>
         <Key android:codes="119" android:keyLabel="53 氵"/>
-        <Key android:codes="39" android:keyLabel='→' android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="-204" android:keyLabel='→' android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     
     <Row>
@@ -77,7 +77,7 @@
         <Key android:codes="104" android:keyLabel="34 木"/>
         <Key android:codes="103" android:keyLabel="44 女"/>
         <Key android:codes="121" android:keyLabel="54 火"/>
-        <Key android:codes="40" android:keyLabel="↓" android:isRepeatable="true" android:keyEdgeFlags="right"/>
+        <Key android:codes="-202" android:keyLabel="↓" android:isRepeatable="true" android:keyEdgeFlags="right"/>
     </Row>
     
     <Row>

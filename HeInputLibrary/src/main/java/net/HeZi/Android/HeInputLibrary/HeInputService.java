@@ -1041,7 +1041,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 dataServer.clearState();
             }
             break;
-       	case 38:	//Up arrow Key
+       	case -201:	//Up arrow Key
     			if(dataServer.changeItemIndexBy(-1))
         		{
         			mCandidateListView.setItemChecked(dataServer.itemIndex, true);
@@ -1056,7 +1056,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     				keyDownUp(KeyEvent.KEYCODE_DPAD_UP);
     			}
     			break;
-    		case 40:	//Down arrow key
+    		case -202:	//Down arrow key
     			if(dataServer.changeItemIndexBy(1))
         		{
         			mCandidateListView.setItemChecked(dataServer.itemIndex, true);
@@ -1071,7 +1071,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     				keyDownUp(KeyEvent.KEYCODE_DPAD_DOWN);
     			}
                 break;
-    		case 37:	//Left arrow Key
+    		case -203:	//Left arrow Key
     			if(dataServer.changePageIndexBy(-1)) //list page changed
         		{
         			mCandidateListView.printListViewPage(dataServer.onePageRows, dataServer.getItemIndex());
@@ -1087,7 +1087,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     				keyDownUp(KeyEvent.KEYCODE_DPAD_LEFT);
     			}
     			break;
-    		case 39:	//right arrow key
+    		case -204:	//right arrow key
     			if(dataServer.changePageIndexBy(1))
         		{
         			mCandidateListView.printListViewPage(dataServer.onePageRows,dataServer.getItemIndex());
