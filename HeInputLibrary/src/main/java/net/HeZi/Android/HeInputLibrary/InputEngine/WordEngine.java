@@ -53,12 +53,18 @@ public final class WordEngine {
     // ---- ranking weights: score = frequency x weight. Tune these by feel. ----
     /** Single characters coming from the old engine. */
     private static final double W_CHAR = 1.0;
+    /**
+     * Characters whose pinyin only STARTS with the typed text, used only when the typed text is
+     * itself a complete syllable ("da": 大 打 达 are exact, 到 道 但 are prefix-only).
+     * 1.0 = no preference for exact matches, 0 = exact matches always come first.
+     */
+    private static final double W_CHAR_PREFIX = 0.1;
     /** Word whose full pinyin equals the typed text ("feiji" -> 飞机). */
     private static final double W_EXACT = 1.0;
     /** Word fully covered by initials / mixed input ("fj", "feij" -> 飞机). */
-    private static final double W_COVER = 0.5;
+    private static final double W_COVER = 0.1;
     /** Longer word completed from a typed prefix ("fei" -> 飞机). */
-    private static final double W_COMPLETE = 0.25;
+    private static final double W_COMPLETE = 0.1;
 
     private static final class Entry {
         final String word;      // e.g. 飞机
@@ -127,10 +133,14 @@ public final class WordEngine {
      *
      * @param typed        lowercase letters a-z typed so far
      * @param chars        candidates from the old engine, in its original order
+     * @param exactChars   characters whose pinyin equals {@code typed} exactly (may be empty/null).
+     *                     If non-empty, the other characters are treated as prefix-only matches
+     *                     and weighted down by W_CHAR_PREFIX.
      * @param includeWords false while a numpad letter is half-entered (then only chars are ranked)
      * @return ranked candidates; if the engine isn't loaded yet, {@code chars} unchanged
      */
-    public static ArrayList<String> rank(String typed, ArrayList<String> chars, boolean includeWords) {
+    public static ArrayList<String> rank(String typed, ArrayList<String> chars,
+                                         HashSet<String> exactChars, boolean includeWords) {
         Entry[][] buckets = sBuckets;
         HashMap<Character, Integer> charFreq = sCharFreq;
         if (buckets == null || charFreq == null || typed == null || typed.isEmpty()) {
@@ -140,10 +150,13 @@ public final class WordEngine {
         ArrayList<Scored> all = new ArrayList<Scored>(chars.size() + 3 * MAX_PER_TIER);
         HashSet<String> seen = new HashSet<String>();
 
+        boolean typedIsSyllable = (exactChars != null && !exactChars.isEmpty());
+
         for (String c : chars) {
             if (!seen.add(c)) continue;   // heteronyms show up once per reading in the old list
             Integer f = (c.length() == 1) ? charFreq.get(c.charAt(0)) : null;
-            all.add(new Scored(c, (f == null ? 0 : f) * W_CHAR));
+            double weight = (typedIsSyllable && !exactChars.contains(c)) ? W_CHAR_PREFIX : W_CHAR;
+            all.add(new Scored(c, (f == null ? 0 : f) * weight));
         }
 
         if (includeWords && typed.length() >= MIN_QUERY_LENGTH) {

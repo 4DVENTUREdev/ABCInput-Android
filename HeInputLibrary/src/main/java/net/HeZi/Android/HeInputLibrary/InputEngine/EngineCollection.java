@@ -21,8 +21,13 @@ import net.HeZi.Android.HeLibrary.HeInput.Setting;
 import net.HeZi.Android.HeLibrary.HeInput.TypingState;
 import java.util.Locale;
 import android.database.MatrixCursor;
+import java.util.Collections;
+import java.util.Comparator;
+import net.HeZi.Android.HeInputLibrary.CedictDictionary;
+import android.database.Cursor;
+import java.util.HashSet;
 import android.database.sqlite.SQLiteDatabase;
-
+import java.util.HashMap;
 import java.util.ArrayList;
 
 public class EngineCollection 
@@ -38,6 +43,23 @@ public class EngineCollection
 	private SQLiteDatabase hemaDatabase;
 	private ArrayList<ZiCiObject> menuDictionary;
 
+	// Characters whose pinyin equals the typed text exactly ("da" -> 大 打 达 ...)
+	private HashSet<String> getExactChars(String typed)
+	{
+		HashSet<String> exact = new HashSet<String>();
+		Cursor c = hemaDatabase.rawQuery(
+				"select HanZiString from PinYin_HanZi where PinYin like ?", new String[]{typed});
+		if (c != null) {
+			while (c.moveToNext()) {
+				String s = c.getString(0);
+				for (int i = 0; i < s.length(); i++) {
+					exact.add(String.valueOf(s.charAt(i)));
+				}
+			}
+			c.close();
+		}
+		return exact;
+	}
 	// used for return from all kinds of engine.
 	public ArrayList<ZiCiObject> resultZiCiObjArray = new ArrayList<ZiCiObject>();
 
@@ -94,17 +116,41 @@ public class EngineCollection
 					ziCiObjArr = pinYinEngine.generateCandidates(setting, typingState, hemaDatabase);
 
 					if (typingState.engCharArrayLen >= 1) {
-						String typed = new String(typingState.engCharArray, 0, typingState.engCharArrayLen)
+						final String typed = new String(typingState.engCharArray, 0, typingState.engCharArrayLen)
 								.toLowerCase(Locale.ROOT);
 
 						ArrayList<String> chars = new ArrayList<String>();
 						for (ZiCiObject z : ziCiObjArr) chars.add(z.ziCi);
 
+						final HashSet<String> exactChars = getExactChars(typed);
+
 						// pass false while a numpad letter is half-entered
-						ArrayList<String> ranked = WordEngine.rank(typed, chars, typingState.engCharShuMa == 0);
+						ArrayList<String> ranked = WordEngine.rank(typed, chars, exactChars,
+								typingState.engCharShuMa == 0);
 
 						ArrayList<ZiCiObject> merged = new ArrayList<ZiCiObject>(ranked.size());
 						for (String s : ranked) merged.add(new ZiCiObject(s, 0, 0, 0, 0, 0, 0));
+
+						// Demote rare readings (e.g. 大 for "tai", 不 for "fu")
+						final ArrayList<String> matching = CedictDictionary.syllablesStartingWith(typed);
+						if (!matching.isEmpty()) {
+							final HashMap<String, Integer> tiers = new HashMap<String, Integer>();
+							for (ZiCiObject z : merged) {
+								int t = 0;
+								if (z.ziCi.length() == 1
+										&& CedictDictionary.readingShare(z.ziCi.charAt(0), matching) < 0.10) {
+									t = 1;   // rare reading: push down
+								}
+								tiers.put(z.ziCi, t);
+							}
+							Collections.sort(merged, new Comparator<ZiCiObject>() {
+								@Override
+								public int compare(ZiCiObject a, ZiCiObject b) {
+									return Integer.compare(tiers.get(a.ziCi), tiers.get(b.ziCi));
+								}
+							});
+						}
+
 						ziCiObjArr = merged;
 					}
 				}

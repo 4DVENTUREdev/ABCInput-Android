@@ -1,8 +1,0 @@
-net.HeZi.Android.OpenHeInput-pngs-0 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\build\generated\res\pngs\debug
-net.HeZi.Android.OpenHeInput-updated_navigation_xml-1 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\build\generated\updated_navigation_xml\debug
-net.HeZi.Android.OpenHeInput-packageDebugResources-2 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-net.HeZi.Android.OpenHeInput-packageDebugResources-3 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-net.HeZi.Android.OpenHeInput-debug-4 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\build\intermediates\merged_res\debug\mergeDebugResources
-net.HeZi.Android.OpenHeInput-debug-5 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\src\debug\res
-net.HeZi.Android.OpenHeInput-main-6 C:\Users\Jason Chen\StudioProjects\OpenHeInput-Android\HeChinese\OpenHeInput\src\main\res
-gradleHome-0 C:\Users\Jason Chen\.gradle

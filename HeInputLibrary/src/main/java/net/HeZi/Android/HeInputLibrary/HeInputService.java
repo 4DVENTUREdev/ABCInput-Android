@@ -413,16 +413,6 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         mInputView.closing();
         final InputMethodSubtype subtype = mInputMethodManager.getCurrentInputMethodSubtype();
         mInputView.setSubtypeOnSpaceKey(subtype);
-
-        if (subtype.getExtraValueOf("subTypeName").contains("heMa_simplified")) {
-            //ToDo: set input method to Chinese simplified
-            dataServer.setting.systemKeyMode = Setting.InputMode.HeMa_Simplified_Mode;
-        }
-        else if (subtype.getExtraValueOf("subTypeName").contains("heMa_traditional")){
-            //ToDo: set input method to Chinese traditional
-            dataServer.setting.systemKeyMode = Setting.InputMode.HeMa_Traditional_Mode;
-        }
-        dataServer.setting.currentKeyMode = dataServer.setting.systemKeyMode;
     }
 
     @Override
@@ -999,7 +989,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             case -11:		//ABC keyboard or Back to previous keyboard
             {
                 if (mCurKeyboard == mQwertyKeyboard) {
-                    mCurKeyboard = heKeyboard_4x6;
+                    mCurKeyboard = mQwertyKeyboard;
                     dataServer.setting.currentKeyMode = dataServer.setting.systemKeyMode;
                     mPredictionOn = true;
                 }
@@ -1232,14 +1222,16 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             setting.systemKeyMode = Setting.InputMode.HeMa_Traditional_Mode;
         }
         //setting.systemKeyMode = Setting.InputMode.HeMa_Traditional_Mode;
+        setting.systemKeyMode = Setting.InputMode.PinYinMode;
         setting.currentKeyMode = setting.systemKeyMode;
-
+// ...
     	setting.bNormalZiKu = sharedPreferences.getBoolean("HeInput_Normal_ZiKu", true);
     	setting.bPinYinPrompt = sharedPreferences.getBoolean("HeInput_PinYin_Prompt", true);
     	setting.bLianXiang = sharedPreferences.getBoolean("HeInput_LianXiang", false);
 
     	setting.bHeMaModeNumpad = sharedPreferences.getBoolean("HeInput_HeMaModeNumpad", true);
     	setting.bPinYinModeNumpad = sharedPreferences.getBoolean("HeInput_PinYinModeNumpad", true);
+        setting.bPinYinModeNumpad = false;   // always use the QWERTY layout for pinyin
     	setting.bHeEnglishModeNumpad = sharedPreferences.getBoolean("HeInput_HeEnglishModeNumpad", true);
 
     	return setting;
