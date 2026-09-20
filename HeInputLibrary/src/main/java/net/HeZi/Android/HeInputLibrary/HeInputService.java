@@ -115,6 +115,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 
     private SharedPreferences sharedPreferences;
     private View mCandidatesContainer;
+    private Setting.InputMode mModeBeforeSymbols = Setting.InputMode.PinYinMode;
     /**
      * Main initialization of the input method component.  Be sure to call
      * to super class.
@@ -986,15 +987,18 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     		case -5:	//Delete Key
     			handleBackspace();
     			break;
-            case -11:		//ABC keyboard or Back to previous keyboard
+            case -11:           //ABC keyboard or Back to previous keyboard
             {
+                boolean fromSymbols = (mCurKeyboard == mSymbolsKeyboard
+                        || mCurKeyboard == mSymbolsShiftedKeyboard);
                 if (mCurKeyboard == mQwertyKeyboard) {
-                    mCurKeyboard = mQwertyKeyboard;
                     dataServer.setting.currentKeyMode = dataServer.setting.systemKeyMode;
                     mPredictionOn = true;
-                }
-                else
-                {
+                } else if (fromSymbols) {
+                    mCurKeyboard = mQwertyKeyboard;
+                    dataServer.setting.currentKeyMode = mModeBeforeSymbols;
+                    mPredictionOn = (mModeBeforeSymbols != Setting.InputMode.EnglishMode);
+                } else {
                     mCurKeyboard = mQwertyKeyboard;
                     dataServer.setting.currentKeyMode = Setting.InputMode.EnglishMode;
                     mPredictionOn = false;
@@ -1004,17 +1008,19 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                 mCandidatesContainer.setVisibility(View.GONE);
             }
             break;
-            case -12:	//Number keyboard and back to previous keyboard
+            case -12:   //Number keyboard and back to previous keyboard
             {
                 //Switch to Number keyboard
                 if (mCurKeyboard == mQwertyKeyboard || mCurKeyboard == heKeyboard_4x6) {
+                    mModeBeforeSymbols = dataServer.setting.currentKeyMode;   // NEW: remember pinyin/English mode
                     mPredictionOn = false;
                     mPreKeyboard = mCurKeyboard;
                     mCurKeyboard = mSymbolsKeyboard;
                 } else if (mCurKeyboard == mSymbolsKeyboard) {
                     if (mPreKeyboard == mQwertyKeyboard) {
                         mCurKeyboard = mQwertyKeyboard;
-                        mPredictionOn = false;
+                        dataServer.setting.currentKeyMode = mModeBeforeSymbols;   // NEW: restore mode
+                        mPredictionOn = (mModeBeforeSymbols != Setting.InputMode.EnglishMode);   // NEW: was "false"
                     } else {
                         mCurKeyboard = heKeyboard_4x6;
                         mPredictionOn = true;
