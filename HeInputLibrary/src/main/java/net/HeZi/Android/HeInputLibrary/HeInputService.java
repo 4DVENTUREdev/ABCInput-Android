@@ -183,6 +183,18 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     @Override public View onCreateInputView() {
         View root = getLayoutInflater().inflate(R.layout.input_view_combined, null);
         mInputView = root.findViewById(R.id.keyboard);
+        root.setBackgroundColor(0xFF1B1B1B);   // fills the nav-bar area; adjust to match your key colour
+        root.setOnApplyWindowInsetsListener((v, insets) -> {
+            int bottom;
+            if (android.os.Build.VERSION.SDK_INT >= 30) {
+                bottom = insets.getInsets(android.view.WindowInsets.Type.navigationBars()).bottom;
+            } else {
+                bottom = insets.getSystemWindowInsetBottom();
+            }
+            v.setPadding(0, 0, 0, bottom);
+            return insets;
+        });
+        root.requestApplyInsets();
         mCandidatesContainer = root.findViewById(R.id.candidatesContainer);
         mCandidateListView = mCandidatesContainer.findViewById(R.id.customListView);
         typedMaView = mCandidatesContainer.findViewById(R.id.typedMa);
