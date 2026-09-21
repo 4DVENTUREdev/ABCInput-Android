@@ -20,6 +20,12 @@
         android:rotationX="0"
         android:rotationY="0"
         android:visibility="visible"
+        android:background="@color/gb_bar"
+        android:keyBackground="@drawable/gb_key_bg"
+        android:keyTextColor="@color/gb_key_text"
+        android:keyTextSize="22sp"
+        android:labelTextSize="16sp"
+        android:shadowRadius="0"
         tools:visibility="visible" />
 
 </LinearLayout>

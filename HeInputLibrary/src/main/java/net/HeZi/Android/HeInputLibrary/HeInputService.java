@@ -183,7 +183,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     @Override public View onCreateInputView() {
         View root = getLayoutInflater().inflate(R.layout.input_view_combined, null);
         mInputView = root.findViewById(R.id.keyboard);
-        root.setBackgroundColor(0xFF1B1B1B);   // fills the nav-bar area; adjust to match your key colour
+        root.setBackgroundColor(0xFFEFEFF8);   // fills the nav-bar area; adjust to match your key colour
         root.setOnApplyWindowInsetsListener((v, insets) -> {
             int bottom;
             if (android.os.Build.VERSION.SDK_INT >= 30) {
@@ -970,6 +970,20 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         for (android.inputmethodservice.Keyboard.Key k : mQwertyKeyboard.getKeys()) {
             if (k.codes != null && k.codes.length > 0 && k.codes[0] == -11) {
                 k.label = chinese ? "中" : "EN";
+            }
+        }
+        tintKeyIcons();
+    }
+    private void tintKeyIcons() {
+        if (android.os.Build.VERSION.SDK_INT < 21) return;
+        android.inputmethodservice.Keyboard[] boards = { mQwertyKeyboard, mSymbolsKeyboard, mSymbolsShiftedKeyboard };
+        for (android.inputmethodservice.Keyboard kb : boards) {
+            if (kb == null) continue;
+            for (android.inputmethodservice.Keyboard.Key k : kb.getKeys()) {
+                if (k.icon != null) {
+                    k.icon = k.icon.mutate();
+                    k.icon.setTint(0xFF1B1B1F);
+                }
             }
         }
     }

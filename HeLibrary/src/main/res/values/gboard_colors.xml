@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gb_bar">#FFEFEFF8</color>
+    <color name="gb_key">#FFFFFFFF</color>
+    <color name="gb_key_pressed">#FFD0D4EA</color>
+    <color name="gb_key_text">#FF1B1B1F</color>
+    <color name="gb_text_secondary">#FF5F6270</color>
+</resources>
