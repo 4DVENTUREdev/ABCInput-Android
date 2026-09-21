@@ -90,7 +90,7 @@ public class HeKeyboard extends Keyboard {
 
     private void populateChinesePunctureArray() {
 
-        chinesePuncArray.put(32, "　");
+        chinesePuncArray.put(32, " ");
         chinesePuncArray.put(33, "！");
         chinesePuncArray.put(34, "“");
         chinesePuncArray.put(36, "￥");
@@ -329,7 +329,7 @@ public class HeKeyboard extends Keyboard {
                 mEnterKey.label = res.getText(R.string.label_next_key);
                 break;
             case EditorInfo.IME_ACTION_SEARCH:
-                mEnterKey.icon = res.getDrawable(R.mipmap.sym_keyboard_search);
+                mEnterKey.icon = res.getDrawable(R.drawable.gb_ic_search);
                 mEnterKey.label = null;
                 break;
             case EditorInfo.IME_ACTION_SEND:
@@ -338,7 +338,7 @@ public class HeKeyboard extends Keyboard {
                 mEnterKey.label = res.getText(R.string.label_send_key);
                 break;
             default:
-                mEnterKey.icon = res.getDrawable(R.mipmap.sym_keyboard_return);
+                mEnterKey.icon = res.getDrawable(R.drawable.gb_ic_return);
                 mEnterKey.label = null;
                 break;
         }

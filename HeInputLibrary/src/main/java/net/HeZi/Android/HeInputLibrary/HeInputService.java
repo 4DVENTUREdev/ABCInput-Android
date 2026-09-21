@@ -1180,7 +1180,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         		{
         			//getCurrentInputConnection().commitText(" ", 1);
                     if(wantChinesePuncture)
-                        heCommitText("　",true,true);
+                        heCommitText(" ",true,true);
                     else
                         heCommitText(" ",false,true);
         		}

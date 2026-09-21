@@ -52,7 +52,7 @@
     </Row>
     
     <Row>
-        <Key android:codes="-1" android:keyIcon="@mipmap/sym_keyboard_shift"
+        <Key android:codes="-1" android:keyIcon="@drawable/gb_ic_shift"
                 android:keyWidth="15%p" android:isModifier="true"
                 android:isSticky="true" android:keyEdgeFlags="left"/>
         <Key android:codes="122" android:keyLabel="z"/>
@@ -62,7 +62,7 @@
         <Key android:codes="98" android:keyLabel="b"/>
         <Key android:codes="110" android:keyLabel="n"/>
         <Key android:codes="109" android:keyLabel="m"/>
-        <Key android:codes="-5" android:keyIcon="@mipmap/sym_keyboard_delete"
+        <Key android:codes="-5" android:keyIcon="@drawable/gb_ic_delete"
                 android:keyWidth="15%p" android:keyEdgeFlags="right"
                 android:isRepeatable="true"/>
     </Row>
@@ -71,10 +71,10 @@
         <Key android:codes="-12" android:keyLabel="123#"
             android:keyWidth="15%p" android:keyEdgeFlags="left"/>
         <Key android:codes="-11" android:keyLabel="中" android:keyWidth="10%p"/>
-        <Key android:codes="32" android:keyIcon="@mipmap/sym_keyboard_space"
+        <Key android:codes="32" android:keyIcon="@drawable/gb_ic_space"
             android:keyWidth="50%p" android:isRepeatable="true"/>
         <Key android:codes="46" android:keyLabel="." android:keyWidth="10%p"/>
-        <Key android:codes="10" android:keyIcon="@mipmap/sym_keyboard_return"
+        <Key android:codes="10" android:keyIcon="@drawable/gb_ic_return"
             android:keyWidth="15%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>
