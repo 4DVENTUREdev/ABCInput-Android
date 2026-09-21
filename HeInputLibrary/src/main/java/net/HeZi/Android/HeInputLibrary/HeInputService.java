@@ -403,7 +403,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     {
         if (mInputView == null) { setInputView(onCreateInputView()); }
         super.onStartInputView(attribute, restarting);
-        mCandidatesContainer.setVisibility(View.VISIBLE);
+
+        // Candidate bar only in Chinese mode on the QWERTY layout
+        boolean chinese = dataServer.setting.currentKeyMode != Setting.InputMode.EnglishMode;
+        boolean showBar = chinese && mCurKeyboard == mQwertyKeyboard;
+        mPredictionOn = mPredictionOn && showBar;
+        mCandidatesContainer.setVisibility(showBar ? View.VISIBLE : View.GONE);
+        updateModeKeyLabel();
         // Apply the selected keyboard to the input view.
         //Log.d("","onStartInputView.....6");
 
@@ -946,7 +952,15 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
 
     public void onRelease(int primaryCode) {
     }
-
+    private void updateModeKeyLabel() {
+        if (mQwertyKeyboard == null) return;
+        boolean chinese = dataServer.setting.currentKeyMode != Setting.InputMode.EnglishMode;
+        for (android.inputmethodservice.Keyboard.Key k : mQwertyKeyboard.getKeys()) {
+            if (k.codes != null && k.codes.length > 0 && k.codes[0] == -11) {
+                k.label = chinese ? "中" : "EN";
+            }
+        }
+    }
     //Handle Control key
     private void handleControlKey(int primaryCode)
     {
@@ -987,22 +1001,25 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     		case -5:	//Delete Key
     			handleBackspace();
     			break;
-            case -11:           //ABC keyboard or Back to previous keyboard
+            case -11:           //Chinese/English toggle (on QWERTY) or back from symbols
             {
                 boolean fromSymbols = (mCurKeyboard == mSymbolsKeyboard
                         || mCurKeyboard == mSymbolsShiftedKeyboard);
-                if (mCurKeyboard == mQwertyKeyboard) {
-                    dataServer.setting.currentKeyMode = dataServer.setting.systemKeyMode;
-                    mPredictionOn = true;
-                } else if (fromSymbols) {
+                if (fromSymbols) {
                     mCurKeyboard = mQwertyKeyboard;
                     dataServer.setting.currentKeyMode = mModeBeforeSymbols;
                     mPredictionOn = (mModeBeforeSymbols != Setting.InputMode.EnglishMode);
                 } else {
                     mCurKeyboard = mQwertyKeyboard;
-                    dataServer.setting.currentKeyMode = Setting.InputMode.EnglishMode;
-                    mPredictionOn = false;
+                    if (dataServer.setting.currentKeyMode == Setting.InputMode.EnglishMode) {
+                        dataServer.setting.currentKeyMode = Setting.InputMode.PinYinMode;
+                        mPredictionOn = true;
+                    } else {
+                        dataServer.setting.currentKeyMode = Setting.InputMode.EnglishMode;
+                        mPredictionOn = false;
+                    }
                 }
+                updateModeKeyLabel();
                 setHeKeyboard(mCurKeyboard);
                 dataServer.clearState();
                 mCandidatesContainer.setVisibility(View.GONE);
@@ -1029,6 +1046,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
                     mCurKeyboard = mSymbolsKeyboard;
                     mPredictionOn = false;
                 }
+                updateModeKeyLabel();
                 setHeKeyboard(mCurKeyboard);
                 dataServer.clearState();
                 mCandidatesContainer.setVisibility(View.GONE);

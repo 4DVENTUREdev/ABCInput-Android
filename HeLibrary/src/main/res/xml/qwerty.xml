@@ -70,7 +70,7 @@
     <Row android:rowEdgeFlags="bottom">
         <Key android:codes="-3" android:keyIcon="@mipmap/sym_keyboard_done"
                 android:keyWidth="15%p" android:keyEdgeFlags="left"/>
-        <Key android:codes="-11" android:keyLabel="@string/label_back_key" android:keyWidth="15%p"/>
+        <Key android:codes="-11" android:keyLabel="中" android:keyWidth="15%p"/>
         <!--
             android:codes: -101 is not a framework-defined key code but a key code that is
             privately defined in com.example.android.softkeyboard.LatinKeyboardView.
