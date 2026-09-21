@@ -92,8 +92,9 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
     private boolean mPredictionOn;
     private boolean mCompletionOn;
     private int mLastDisplayWidth;
-    private boolean mCapsLock;
-    private long mLastShiftTime;
+    private int mShiftState = HeKeyboard.SHIFT_OFF;
+    private long mLastShiftTapTime;
+    private static final long DOUBLE_TAP_MS = 400;
     private long mMetaState;
 
     private boolean wantChinesePuncture = true;
@@ -273,6 +274,7 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             // Clear shift states.
             mMetaState = 0;
             dataServer.clearState();
+            setShiftState(HeKeyboard.SHIFT_OFF);
         }
 
         mPredictionOn = false;
@@ -637,13 +639,14 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
      */
     private void updateShiftKeyState(EditorInfo attr) {
         if (attr != null
-                && mInputView != null && mQwertyKeyboard /*englishKeyboard_6x6*/ == mInputView.getKeyboard()) {
+                && mInputView != null && mQwertyKeyboard == mInputView.getKeyboard()) {
+            if (mShiftState == HeKeyboard.SHIFT_LOCK) return;   // caps lock wins
             int caps = 0;
             EditorInfo ei = getCurrentInputEditorInfo();
             if (ei != null && ei.inputType != InputType.TYPE_NULL) {
                 caps = getCurrentInputConnection().getCursorCapsMode(attr.inputType);
             }
-            mInputView.setShifted(mCapsLock || caps != 0);
+            setShiftState(caps != 0 ? HeKeyboard.SHIFT_ONCE : HeKeyboard.SHIFT_OFF);
         }
     }
 
@@ -699,28 +702,25 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
             return;
         } //*/
         //*
-        else if (!mPredictionOn && isWordSeparator(primaryCode)) {
-            // Handle separator
-            //if (mComposing.length() > 0) {
-            //    commitTyped(getCurrentInputConnection());
-            //}
-            sendKey(primaryCode);
-            updateShiftKeyState(getCurrentInputEditorInfo());
+        else if (!mPredictionOn) {
+            int code = primaryCode;
+            if (mShiftState != HeKeyboard.SHIFT_OFF && Character.isLetter(code)) {
+                code = Character.toUpperCase(code);
+            }
+            getCurrentInputConnection().commitText(String.valueOf((char) code), 1);
+            if (mShiftState == HeKeyboard.SHIFT_ONCE) {
+                setShiftState(HeKeyboard.SHIFT_OFF);
+            }
         }
         //*/
         else if (!mPredictionOn) {
-            //sendKey(primaryCode);
-            //updateShiftKeyState(getCurrentInputEditorInfo());
-
-            if(mCapsLock)
-            {
-                getCurrentInputConnection().commitText(String.valueOf((char) (primaryCode-32)), 1);
-                checkToggleCapsLock();
-                mInputView.setShifted(mCapsLock || !mInputView.isShifted());
+            int code = primaryCode;
+            if (mShiftState != HeKeyboard.SHIFT_OFF && Character.isLetter(code)) {
+                code = Character.toUpperCase(code);
             }
-            else
-            {
-                getCurrentInputConnection().commitText(String.valueOf((char) primaryCode), 1);
+            getCurrentInputConnection().commitText(String.valueOf((char) code), 1);
+            if (mShiftState == HeKeyboard.SHIFT_ONCE) {
+                setShiftState(HeKeyboard.SHIFT_OFF);
             }
         }
         else if(mCurKeyboard.isHeShuMaKey(primaryCode)){
@@ -839,10 +839,18 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         }
 
         Keyboard currentKeyboard = mInputView.getKeyboard();
-        if (mQwertyKeyboard /*englishKeyboard_6x6*/ == currentKeyboard) {
-            // Alphabet keyboard
-            checkToggleCapsLock();
-            mInputView.setShifted(mCapsLock || !mInputView.isShifted());
+        if (mQwertyKeyboard == currentKeyboard) {
+            long now = System.currentTimeMillis();
+            if (mShiftState == HeKeyboard.SHIFT_LOCK) {
+                setShiftState(HeKeyboard.SHIFT_OFF);
+            } else if (mShiftState == HeKeyboard.SHIFT_ONCE && now - mLastShiftTapTime < DOUBLE_TAP_MS) {
+                setShiftState(HeKeyboard.SHIFT_LOCK);      // quick second tap
+            } else if (mShiftState == HeKeyboard.SHIFT_ONCE) {
+                setShiftState(HeKeyboard.SHIFT_OFF);
+            } else {
+                setShiftState(HeKeyboard.SHIFT_ONCE);
+            }
+            mLastShiftTapTime = now;
         } else if (currentKeyboard == mSymbolsKeyboard) {
             mSymbolsKeyboard.setShifted(true);
             setHeKeyboard(mSymbolsShiftedKeyboard);
@@ -898,14 +906,13 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         mInputMethodManager.switchToNextInputMethod(getToken(), true); // false:  onlyCurrentIme
     }
 
-    private void checkToggleCapsLock() {
-        long now = System.currentTimeMillis();
-        if (mLastShiftTime + 800 < now) {
-            mCapsLock = !mCapsLock;
-            mLastShiftTime = 0;
-        } else {
-            mLastShiftTime = now;
-        }
+    private void setShiftState(int state) {
+        if (state == mShiftState) return;
+        mShiftState = state;
+        if (mQwertyKeyboard == null) return;
+        mQwertyKeyboard.setShifted(state != HeKeyboard.SHIFT_OFF);
+        mQwertyKeyboard.setShiftIconState(getResources(), state);
+        if (mInputView != null) mInputView.invalidateAllKeys();
     }
 
     private String getWordSeparators() {

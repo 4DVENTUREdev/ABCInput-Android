@@ -27,7 +27,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 
 public class HeKeyboard extends Keyboard {
+    public static final int SHIFT_OFF = 0;
+    public static final int SHIFT_ONCE = 1;
+    public static final int SHIFT_LOCK = 2;
 
+    private Key mShiftKey;
     public static final int KEYCODE_ABC_N_BACK = -11;
     public static final int KEYCODE_123_N_BACK = -12;
 
@@ -133,7 +137,11 @@ public class HeKeyboard extends Keyboard {
         } else if (key.codes[0] == -12) {
             m123AndBackKey = key;
         }
-
+        else if (key.codes[0] == -12) {
+            m123AndBackKey = key;
+        } else if (key.codes[0] == -1) {
+            mShiftKey = key;
+        }
         return key;
     }
 
@@ -343,7 +351,15 @@ public class HeKeyboard extends Keyboard {
                 break;
         }
     }
-	
+    /** Swaps the shift key icon: outline (off), filled (once), filled + bar (caps lock). */
+    public void setShiftIconState(Resources res, int state) {
+        if (mShiftKey == null || mShiftKey.label != null) return; // symbols page uses a text label
+        int id;
+        if (state == SHIFT_LOCK) id = R.drawable.gb_ic_shift_lock;
+        else if (state == SHIFT_ONCE) id = R.drawable.gb_ic_shift_on;
+        else id = R.drawable.gb_ic_shift;
+        mShiftKey.icon = res.getDrawable(id);
+    }
     public void setSpaceIcon(final Drawable icon) {
         if (mSpaceKey != null) {
             mSpaceKey.icon = icon;

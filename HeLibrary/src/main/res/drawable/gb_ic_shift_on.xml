@@ -3,6 +3,7 @@
     android:viewportWidth="24" android:viewportHeight="24">
     <path
         android:pathData="M12,4 L4,12 H8 V19 H16 V12 H20 Z"
+        android:fillColor="#1F1F1F"
         android:strokeColor="#1F1F1F"
         android:strokeWidth="1.8"
         android:strokeLineJoin="round" />
