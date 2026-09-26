@@ -269,14 +269,15 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         // Reset our state.  We want to do this even if restarting, because
         // the underlying state of the text editor could have changed in any way.
         //mComposing.setLength(0);
-
+        if (mInputView != null) {
+            mInputView.requestApplyInsets();
+        }
         if (!restarting) {
             // Clear shift states.
             mMetaState = 0;
             dataServer.clearState();
             setShiftState(HeKeyboard.SHIFT_OFF);
         }
-
         mPredictionOn = false;
         mCompletionOn = false;
         mCompletions = null;
@@ -418,6 +419,9 @@ implements KeyboardView.OnKeyboardActionListener, CandidateListView.CandidateIte
         if (mInputView == null) { setInputView(onCreateInputView()); }
         super.onStartInputView(attribute, restarting);
 
+        if (mInputView != null) {
+            mInputView.requestApplyInsets();
+        }
         // Candidate bar only in Chinese mode on the QWERTY layout
         boolean chinese = dataServer.setting.currentKeyMode != Setting.InputMode.EnglishMode;
         boolean showBar = chinese && mCurKeyboard == mQwertyKeyboard;
